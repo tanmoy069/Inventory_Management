@@ -1,5 +1,6 @@
 package com.tanmoy.inventory.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Customer", uniqueConstraints = @UniqueConstraint(columnNames = { "primaryPhone", "email" }))
+@Table(name = "Customer", uniqueConstraints = @UniqueConstraint(columnNames = { "primaryPhone", "email", "userName" }))
 public class Customer {
 	
 	@Id
@@ -26,10 +27,15 @@ public class Customer {
 	private String address;
 	private int addressCode;
 	private int custType;
+	@Column(name = "userName", length = 50)
 	private String userName;
 	private String password;
 	private Date createdDate;
 	
+	public Customer() {
+		super();
+	}
+
 	public Customer(String name, String comapanyName, int primaryPhone, int optionalPhone, String email,
 			String address, int addressCode, int custType, String userName, String password) {
 		super();
@@ -43,6 +49,7 @@ public class Customer {
 		this.custType = custType;
 		this.userName = userName;
 		this.password = password;
+		this.createdDate = Calendar.getInstance().getTime();
 	}
 
 	public int getId() {
@@ -139,6 +146,14 @@ public class Customer {
 	
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", comapanyName=" + comapanyName + ", primaryPhone="
+				+ primaryPhone + ", optionalPhone=" + optionalPhone + ", email=" + email + ", address=" + address
+				+ ", addressCode=" + addressCode + ", custType=" + custType + ", userName=" + userName + ", password="
+				+ password + ", createdDate=" + createdDate + "]";
 	}
 	
 }
