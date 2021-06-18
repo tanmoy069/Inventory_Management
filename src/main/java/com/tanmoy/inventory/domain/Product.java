@@ -2,11 +2,13 @@ package com.tanmoy.inventory.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table
+@Entity
 public class Product {
 
 	@Id

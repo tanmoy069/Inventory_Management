@@ -13,7 +13,7 @@ public class Transactions {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	private Date transDate;
 	private int transType;
 	private Double crAmount;
@@ -39,11 +39,11 @@ public class Transactions {
 		this.invoiceNo = invoiceNo;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

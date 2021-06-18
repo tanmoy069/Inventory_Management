@@ -19,8 +19,8 @@ public class Customer {
 	private String name;
 	private String comapanyName;
 	@Column(name = "primaryPhone", length = 11)
-	private long primaryPhone;
-	private long optionalPhone;
+	private int primaryPhone;
+	private int optionalPhone;
 	@Column(name = "email", length = 100)
 	private String email;
 	private String address;
@@ -30,7 +30,7 @@ public class Customer {
 	private String password;
 	private Date createdDate;
 	
-	public Customer(String name, String comapanyName, long primaryPhone, long optionalPhone, String email,
+	public Customer(String name, String comapanyName, int primaryPhone, int optionalPhone, String email,
 			String address, int addressCode, int custType, String userName, String password) {
 		super();
 		this.name = name;
@@ -69,19 +69,19 @@ public class Customer {
 		this.comapanyName = comapanyName;
 	}
 
-	public long getPrimaryPhone() {
+	public int getPrimaryPhone() {
 		return primaryPhone;
 	}
 
-	public void setPrimaryPhone(long primaryPhone) {
+	public void setPrimaryPhone(int primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 
-	public long getOptionalPhone() {
+	public int getOptionalPhone() {
 		return optionalPhone;
 	}
 
-	public void setOptionalPhone(long optionalPhone) {
+	public void setOptionalPhone(int optionalPhone) {
 		this.optionalPhone = optionalPhone;
 	}
 
