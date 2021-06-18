@@ -1,5 +1,6 @@
 package com.tanmoy.inventory.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -25,6 +26,10 @@ public class Transactions {
 	private Date createDate;
 	private int invoiceNo;
 
+	public Transactions() {
+		super();
+	}
+
 	public Transactions(Date transDate, int transType, Double crAmount, Double drAmount, int productId,
 			int numberOfProduct, int custSuppId, int userId, int invoiceNo) {
 		super();
@@ -37,6 +42,7 @@ public class Transactions {
 		this.custSuppId = custSuppId;
 		this.userId = userId;
 		this.invoiceNo = invoiceNo;
+		this.createDate = Calendar.getInstance().getTime();
 	}
 
 	public int getId() {
@@ -127,4 +133,12 @@ public class Transactions {
 		this.invoiceNo = invoiceNo;
 	}
 
+	@Override
+	public String toString() {
+		return "Transactions [id=" + id + ", transDate=" + transDate + ", transType=" + transType + ", crAmount="
+				+ crAmount + ", drAmount=" + drAmount + ", productId=" + productId + ", numberOfProduct="
+				+ numberOfProduct + ", custSuppId=" + custSuppId + ", userId=" + userId + ", createDate=" + createDate
+				+ ", invoiceNo=" + invoiceNo + "]";
+	}
+	
 }

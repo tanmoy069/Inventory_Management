@@ -1,5 +1,6 @@
 package com.tanmoy.inventory.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -27,6 +28,10 @@ public class Supplier {
 	private int addressCode;
 	private Date createdDate;
 
+	public Supplier() {
+		super();
+	}
+
 	public Supplier(String name, String comapanyName, long primaryPhone, long optionalPhone, String email,
 			String address, int addressCode) {
 		super();
@@ -37,6 +42,7 @@ public class Supplier {
 		this.email = email;
 		this.address = address;
 		this.addressCode = addressCode;
+		this.createdDate = Calendar.getInstance().getTime();
 	}
 
 	public int getId() {
@@ -111,4 +117,11 @@ public class Supplier {
 		this.createdDate = createdDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Supplier [id=" + id + ", name=" + name + ", comapanyName=" + comapanyName + ", primaryPhone="
+				+ primaryPhone + ", optionalPhone=" + optionalPhone + ", email=" + email + ", address=" + address
+				+ ", addressCode=" + addressCode + ", createdDate=" + createdDate + "]";
+	}
+	
 }

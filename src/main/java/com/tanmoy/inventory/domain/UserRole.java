@@ -20,6 +20,10 @@ public class UserRole {
 	private int isUpdate;
 	private int isDelete;
 
+	public UserRole() {
+		super();
+	}
+
 	public UserRole(String roleName, int roleType, int accessType, int onlyView, int isInsert, int isUpdate,
 			int isDelete) {
 		super();
@@ -96,4 +100,11 @@ public class UserRole {
 		this.isDelete = isDelete;
 	}
 
+	@Override
+	public String toString() {
+		return "UserRole [roleId=" + roleId + ", roleName=" + roleName + ", roleType=" + roleType + ", accessType="
+				+ accessType + ", onlyView=" + onlyView + ", isInsert=" + isInsert + ", isUpdate=" + isUpdate
+				+ ", isDelete=" + isDelete + "]";
+	}
+	
 }

@@ -20,6 +20,10 @@ public class Stock {
 	private int stockDetails;
 	private Date stockInDate;
 	private Date stockOutDate;
+	
+	public Stock() {
+		super();
+	}
 
 	public Stock(int productId, int stockNumbers, int stockType, int stockDetails, Date stockInDate,
 			Date stockOutDate) {
@@ -88,4 +92,11 @@ public class Stock {
 		this.stockOutDate = stockOutDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Stock [autoId=" + autoId + ", productId=" + productId + ", stockNumbers=" + stockNumbers
+				+ ", stockType=" + stockType + ", stockDetails=" + stockDetails + ", stockInDate=" + stockInDate
+				+ ", stockOutDate=" + stockOutDate + "]";
+	}
+	
 }
