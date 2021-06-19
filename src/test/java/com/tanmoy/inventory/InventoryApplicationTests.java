@@ -7,9 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.tanmoy.inventory.domain.Customer;
 import com.tanmoy.inventory.domain.Product;
 import com.tanmoy.inventory.domain.ProductType;
+import com.tanmoy.inventory.domain.Stock;
 import com.tanmoy.inventory.repository.CustomerRepo;
 import com.tanmoy.inventory.repository.ProductRepo;
 import com.tanmoy.inventory.repository.ProductTypeRepo;
+import com.tanmoy.inventory.repository.StockRepo;
 
 @SpringBootTest
 class InventoryApplicationTests {
@@ -18,6 +20,7 @@ class InventoryApplicationTests {
 	@Autowired private CustomerRepo custRepo;
 	@Autowired private ProductRepo proRepo;
 	@Autowired private ProductTypeRepo pTypeRepo;
+	@Autowired private StockRepo stockRepo;
 	
 	@Test
 	void contextLoads() {
@@ -68,6 +71,21 @@ class InventoryApplicationTests {
 	
 	private ProductType getProductType() {
 		return new ProductType("Smart TV", "All types of smart television are under this type");
+	}
+	
+	@Test
+	void addStockTest() {
+		stockRepo.save(getStock());
+	}
+	
+	@Test
+	void findStockByProductId() {
+		Stock st= stockRepo.findByProductId(1);
+		System.out.println(st.toString());
+	}
+	
+	private Stock getStock() {
+		return new Stock(1, 10, false, null);
 	}	
 
 }
