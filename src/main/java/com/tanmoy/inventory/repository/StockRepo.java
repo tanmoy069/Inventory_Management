@@ -2,8 +2,8 @@ package com.tanmoy.inventory.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.tanmoy.inventory.domain.Supplier;
+import com.tanmoy.inventory.domain.Stock;
 
-public interface StockRepo extends JpaRepository<Supplier, Integer>{
+public interface StockRepo extends JpaRepository<Stock, Integer>{
 
 }
