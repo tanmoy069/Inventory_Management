@@ -1,5 +1,7 @@
 package com.tanmoy.inventory;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,10 +10,12 @@ import com.tanmoy.inventory.domain.Customer;
 import com.tanmoy.inventory.domain.Product;
 import com.tanmoy.inventory.domain.ProductType;
 import com.tanmoy.inventory.domain.Stock;
+import com.tanmoy.inventory.domain.Supplier;
 import com.tanmoy.inventory.repository.CustomerRepo;
 import com.tanmoy.inventory.repository.ProductRepo;
 import com.tanmoy.inventory.repository.ProductTypeRepo;
 import com.tanmoy.inventory.repository.StockRepo;
+import com.tanmoy.inventory.repository.SupplierRepo;
 
 @SpringBootTest
 class InventoryApplicationTests {
@@ -21,6 +25,7 @@ class InventoryApplicationTests {
 	@Autowired private ProductRepo proRepo;
 	@Autowired private ProductTypeRepo pTypeRepo;
 	@Autowired private StockRepo stockRepo;
+	@Autowired private SupplierRepo suppRepo;
 	
 	@Test
 	void contextLoads() {
@@ -86,6 +91,27 @@ class InventoryApplicationTests {
 	
 	private Stock getStock() {
 		return new Stock(1, 10, false, null);
+	}
+	
+	@Test
+	void addSupplierTest() {
+		suppRepo.save(getSupplier());
+	}
+	
+	@Test
+	void findSupplierById() {
+		Supplier st= suppRepo.findById(1);
+		System.out.println(st.toString());
+	}
+	
+	@Test
+	void findSupplierByComapyName() {
+		List<Supplier> st= suppRepo.findByCompanyNameContains("ABC");
+		System.out.println(st.get(0).toString());
+	}
+	
+	private Supplier getSupplier() {
+		return new Supplier("Rajib", "ABC Company", 1671234567, 0, null, null, 0);
 	}	
 
 }

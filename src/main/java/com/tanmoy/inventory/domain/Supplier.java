@@ -19,10 +19,10 @@ public class Supplier {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private String comapanyName;
+	private String companyName;
 	@Column(name = "primaryPhone", length = 11)
-	private long primaryPhone;
-	private long optionalPhone;
+	private int primaryPhone;
+	private int optionalPhone;
 	@Column(name = "email", length = 100)
 	private String email;
 	private String address;
@@ -33,11 +33,11 @@ public class Supplier {
 		super();
 	}
 
-	public Supplier(String name, String comapanyName, long primaryPhone, long optionalPhone, String email,
+	public Supplier(String name, String companyName, int primaryPhone, int optionalPhone, String email,
 			String address, int addressCode) {
 		super();
 		this.name = name;
-		this.comapanyName = comapanyName;
+		this.companyName = companyName;
 		this.primaryPhone = primaryPhone;
 		this.optionalPhone = optionalPhone;
 		this.email = email;
@@ -63,18 +63,18 @@ public class Supplier {
 	}
 
 	public String getComapanyName() {
-		return comapanyName;
+		return companyName;
 	}
 
-	public void setComapanyName(String comapanyName) {
-		this.comapanyName = comapanyName;
+	public void setComapanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public long getPrimaryPhone() {
 		return primaryPhone;
 	}
 
-	public void setPrimaryPhone(long primaryPhone) {
+	public void setPrimaryPhone(int primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 
@@ -82,7 +82,7 @@ public class Supplier {
 		return optionalPhone;
 	}
 
-	public void setOptionalPhone(long optionalPhone) {
+	public void setOptionalPhone(int optionalPhone) {
 		this.optionalPhone = optionalPhone;
 	}
 
@@ -120,7 +120,7 @@ public class Supplier {
 
 	@Override
 	public String toString() {
-		return "Supplier [id=" + id + ", name=" + name + ", comapanyName=" + comapanyName + ", primaryPhone="
+		return "Supplier [id=" + id + ", name=" + name + ", comapanyName=" + companyName + ", primaryPhone="
 				+ primaryPhone + ", optionalPhone=" + optionalPhone + ", email=" + email + ", address=" + address
 				+ ", addressCode=" + addressCode + ", createdDate=" + createdDate + "]";
 	}
