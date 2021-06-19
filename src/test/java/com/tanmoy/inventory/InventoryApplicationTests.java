@@ -50,12 +50,12 @@ class InventoryApplicationTests {
 	
 	@Test
 	void findProductById() {
-		Product pd = proRepo.findById(8);
+		Product pd = proRepo.findById(10);
 		System.out.println(pd.toString());
 	}
 	
 	private Product getProduct() {
-		return new Product("Sony Xperia XA", 1, "Specification\nRAM 2GB and ROM 16GB Version");
+		return new Product("Xiaomi Note 5", 1, "Specification\nRAM 3GB and ROM 32GB Version", 15000, 18000);
 	}
 	
 	@Test

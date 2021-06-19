@@ -19,17 +19,21 @@ public class Product {
 	private String productName;
 	private int productType;
 	private String details;
+	private double purchaseValue;
+	private double sellingValue;
 	private Date createdDate;
 	
 	public Product() {
 		super();
 	}
 
-	public Product(String productName, int productType, String details) {
+	public Product(String productName, int productType, String details, double purchaseValue, double sellingValue) {
 		super();
 		this.productName = productName;
 		this.productType = productType;
 		this.details = details;
+		this.purchaseValue = purchaseValue;
+		this.sellingValue = sellingValue;
 		this.createdDate = Calendar.getInstance().getTime();
 	}
 
@@ -73,10 +77,27 @@ public class Product {
 		this.createdDate = createdDate;
 	}
 
+	public double getPurchaseValue() {
+		return purchaseValue;
+	}
+
+	public void setPurchaseValue(double purchaseValue) {
+		this.purchaseValue = purchaseValue;
+	}
+
+	public double getSellingValue() {
+		return sellingValue;
+	}
+
+	public void setSellingValue(double sellingValue) {
+		this.sellingValue = sellingValue;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", productName=" + productName + ", productType=" + productType + ", details="
-				+ details + ", createdDate=" + createdDate + "]";
+				+ details + ", purchaseValue=" + purchaseValue + ", sellingValue=" + sellingValue + ", createdDate="
+				+ createdDate + "]";
 	}
-	
+
 }
