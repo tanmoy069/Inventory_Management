@@ -1,5 +1,6 @@
 package com.tanmoy.inventory.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -25,12 +26,12 @@ public class Stock {
 		super();
 	}
 
-	public Stock(int productId, int availableStocks, boolean isStockUpdate, Date stockInDate, Date stockOutDate) {
+	public Stock(int productId, int availableStocks, boolean isStockUpdate, Date stockOutDate) {
 		super();
 		this.productId = productId;
 		this.availableStocks = availableStocks;
 		this.isStockUpdate = isStockUpdate;
-		this.stockInDate = stockInDate;
+		this.stockInDate = Calendar.getInstance().getTime();
 		this.stockOutDate = stockOutDate;
 	}
 
