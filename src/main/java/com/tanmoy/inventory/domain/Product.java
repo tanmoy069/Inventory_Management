@@ -15,16 +15,16 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private int id;
-	private int productName;
+	private String productName;
 	private int productType;
-	private int details;
+	private String details;
 	private Date createdDate;
 	
 	public Product() {
 		super();
 	}
 
-	public Product(int productName, int productType, int details) {
+	public Product(String productName, int productType, String details) {
 		super();
 		this.productName = productName;
 		this.productType = productType;
@@ -40,11 +40,11 @@ public class Product {
 		this.id = id;
 	}
 
-	public int getProductName() {
+	public String getProductName() {
 		return productName;
 	}
 
-	public void setProductName(int productName) {
+	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 
@@ -56,11 +56,11 @@ public class Product {
 		this.productType = productType;
 	}
 
-	public int getDetails() {
+	public String getDetails() {
 		return details;
 	}
 
-	public void setDetails(int details) {
+	public void setDetails(String details) {
 		this.details = details;
 	}
 
