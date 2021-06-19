@@ -6,8 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.tanmoy.inventory.domain.Customer;
 import com.tanmoy.inventory.domain.Product;
+import com.tanmoy.inventory.domain.ProductType;
 import com.tanmoy.inventory.repository.CustomerRepo;
 import com.tanmoy.inventory.repository.ProductRepo;
+import com.tanmoy.inventory.repository.ProductTypeRepo;
 
 @SpringBootTest
 class InventoryApplicationTests {
@@ -15,6 +17,7 @@ class InventoryApplicationTests {
 	
 	@Autowired private CustomerRepo custRepo;
 	@Autowired private ProductRepo proRepo;
+	@Autowired private ProductTypeRepo pTypeRepo;
 	
 	@Test
 	void contextLoads() {
@@ -27,13 +30,13 @@ class InventoryApplicationTests {
 	
 	@Test
 	void findCustomerByUserName() {
-		Customer ct = custRepo.findByUserName("apu");
+		Customer ct = custRepo.findByUserName("shaon");
 		System.out.println(ct.toString());
 	}	
 	
 	private Customer getCustomer() {
-		Customer ct = new Customer("Apu", "Naztech", 1725768409, 0, 
-				"apu.sangma@gmail.com", "Kalachadpur, Dhaka", 0, 0, "apu", "1234");		
+		Customer ct = new Customer("Shaon", "IHT", 1685094300, 0, 
+				"mohaiminul.islam@gmail.com", "Gopalpur, Tangail", 0, 0, "shaon", "1234");		
 		return ct;
 	}
 	
@@ -52,6 +55,19 @@ class InventoryApplicationTests {
 		return new Product("Sony Xperia XA", 1, "Specification\nRAM 2GB and ROM 16GB Version");
 	}
 	
+	@Test
+	void addProductTypeTest() {
+		pTypeRepo.save(getProductType());
+	}
 	
+	@Test
+	void findProductTypeById() {
+		ProductType pdt= pTypeRepo.findById(1);
+		System.out.println(pdt.toString());
+	}
+	
+	private ProductType getProductType() {
+		return new ProductType("Smart TV", "All types of smart television are under this type");
+	}	
 
 }
