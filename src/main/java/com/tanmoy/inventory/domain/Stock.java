@@ -16,23 +16,20 @@ public class Stock {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int autoId;
 	private int productId;
-	private int stockNumbers;
-	private int stockType;
-	private int stockDetails;
+	private int availableStocks;
+	private boolean isStockUpdate;
 	private Date stockInDate;
 	private Date stockOutDate;
-	
+
 	public Stock() {
 		super();
 	}
 
-	public Stock(int productId, int stockNumbers, int stockType, int stockDetails, Date stockInDate,
-			Date stockOutDate) {
+	public Stock(int productId, int availableStocks, boolean isStockUpdate, Date stockInDate, Date stockOutDate) {
 		super();
 		this.productId = productId;
-		this.stockNumbers = stockNumbers;
-		this.stockType = stockType;
-		this.stockDetails = stockDetails;
+		this.availableStocks = availableStocks;
+		this.isStockUpdate = isStockUpdate;
 		this.stockInDate = stockInDate;
 		this.stockOutDate = stockOutDate;
 	}
@@ -53,28 +50,20 @@ public class Stock {
 		this.productId = productId;
 	}
 
-	public int getStockNumbers() {
-		return stockNumbers;
+	public int getAvailableStocks() {
+		return availableStocks;
 	}
 
-	public void setStockNumbers(int stockNumbers) {
-		this.stockNumbers = stockNumbers;
+	public void setAvailableStocks(int availableStocks) {
+		this.availableStocks = availableStocks;
 	}
 
-	public int getStockType() {
-		return stockType;
+	public boolean isStockUpdate() {
+		return isStockUpdate;
 	}
 
-	public void setStockType(int stockType) {
-		this.stockType = stockType;
-	}
-
-	public int getStockDetails() {
-		return stockDetails;
-	}
-
-	public void setStockDetails(int stockDetails) {
-		this.stockDetails = stockDetails;
+	public void setStockUpdate(boolean isStockUpdate) {
+		this.isStockUpdate = isStockUpdate;
 	}
 
 	public Date getStockInDate() {
@@ -95,9 +84,9 @@ public class Stock {
 
 	@Override
 	public String toString() {
-		return "Stock [autoId=" + autoId + ", productId=" + productId + ", stockNumbers=" + stockNumbers
-				+ ", stockType=" + stockType + ", stockDetails=" + stockDetails + ", stockInDate=" + stockInDate
-				+ ", stockOutDate=" + stockOutDate + "]";
+		return "Stock [autoId=" + autoId + ", productId=" + productId + ", availableStocks=" + availableStocks
+				+ ", isStockUpdate=" + isStockUpdate + ", stockInDate=" + stockInDate + ", stockOutDate=" + stockOutDate
+				+ "]";
 	}
-	
+
 }
