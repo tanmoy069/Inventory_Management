@@ -6,4 +6,5 @@ import com.tanmoy.inventory.domain.ProductType;
 
 public interface ProductTypeRepo extends JpaRepository<ProductType, Integer>{
 
+	ProductType findById(int i);
 }
