@@ -22,7 +22,7 @@ public class Transactions {
 	private Double drAmount;
 	private int productId;
 	private int numberOfProduct;
-	private int custSuppId;
+	private int customerId;
 	private int userId;
 	private Date createDate;
 	private int invoiceNo;
@@ -32,7 +32,7 @@ public class Transactions {
 	}
 
 	public Transactions(Date transDate, int transType, Double crAmount, Double drAmount, int productId,
-			int numberOfProduct, int custSuppId, int userId, int invoiceNo) {
+			int numberOfProduct, int customerId, int userId, int invoiceNo) {
 		super();
 		this.transDate = transDate;
 		this.transType = transType;
@@ -40,7 +40,7 @@ public class Transactions {
 		this.drAmount = drAmount;
 		this.productId = productId;
 		this.numberOfProduct = numberOfProduct;
-		this.custSuppId = custSuppId;
+		this.customerId = customerId;
 		this.userId = userId;
 		this.invoiceNo = invoiceNo;
 		this.createDate = Calendar.getInstance().getTime();
@@ -102,12 +102,12 @@ public class Transactions {
 		this.numberOfProduct = numberOfProduct;
 	}
 
-	public int getCustSuppId() {
-		return custSuppId;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustSuppId(int custSuppId) {
-		this.custSuppId = custSuppId;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public int getUserId() {
@@ -138,7 +138,7 @@ public class Transactions {
 	public String toString() {
 		return "Transactions [id=" + id + ", transDate=" + transDate + ", transType=" + transType + ", crAmount="
 				+ crAmount + ", drAmount=" + drAmount + ", productId=" + productId + ", numberOfProduct="
-				+ numberOfProduct + ", custSuppId=" + custSuppId + ", userId=" + userId + ", createDate=" + createDate
+				+ numberOfProduct + ", customerId=" + customerId + ", userId=" + userId + ", createDate=" + createDate
 				+ ", invoiceNo=" + invoiceNo + "]";
 	}
 	
