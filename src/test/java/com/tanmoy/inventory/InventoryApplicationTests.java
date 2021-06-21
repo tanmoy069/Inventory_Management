@@ -1,5 +1,8 @@
 package com.tanmoy.inventory;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -11,21 +14,25 @@ import com.tanmoy.inventory.domain.Product;
 import com.tanmoy.inventory.domain.ProductType;
 import com.tanmoy.inventory.domain.Stock;
 import com.tanmoy.inventory.domain.Supplier;
+import com.tanmoy.inventory.domain.Transactions;
 import com.tanmoy.inventory.repository.CustomerRepo;
 import com.tanmoy.inventory.repository.ProductRepo;
 import com.tanmoy.inventory.repository.ProductTypeRepo;
 import com.tanmoy.inventory.repository.StockRepo;
 import com.tanmoy.inventory.repository.SupplierRepo;
+import com.tanmoy.inventory.repository.TransactionsRepo;
 
 @SpringBootTest
 class InventoryApplicationTests {
 
-	
 	@Autowired private CustomerRepo custRepo;
 	@Autowired private ProductRepo proRepo;
 	@Autowired private ProductTypeRepo pTypeRepo;
 	@Autowired private StockRepo stockRepo;
 	@Autowired private SupplierRepo suppRepo;
+	@Autowired private TransactionsRepo transRepo;
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	@Test
 	void contextLoads() {
@@ -112,6 +119,57 @@ class InventoryApplicationTests {
 	
 	private Supplier getSupplier() {
 		return new Supplier("Rajib", "ABC Company", 1671234567, 0, null, null, 0);
+	}
+	
+	@Test
+	void addTransactionsTest() {
+		transRepo.save(getTransactions());
+	}
+	
+	@Test
+	void findTransactionsById() {
+		Transactions st= transRepo.findById(1);
+		System.out.println(st.toString());
+	}
+	
+	@Test
+	void findTransactionsByTransDate() {
+		List<Transactions> st = null;
+		try {
+			st = transRepo.findByTransDate(sdf.parse("2021-06-21"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		System.out.println(st.get(0).toString());
+	}
+	
+	@Test
+	void findTransactionsByProductId() {
+		List<Transactions> st = null;
+		st = transRepo.findByProductId(1);
+		System.out.println(st.get(0).toString());
+	}
+	
+	@Test
+	void findTransactionsByUserId() {
+		List<Transactions> st = null;
+		st = transRepo.findByUserId(1);
+		System.out.println(st.get(0).toString());
+	}
+	
+	@Test
+	void findTransactionsByCustomerId() {
+		List<Transactions> st = transRepo.findByCustomerId(1);
+		System.out.println(st.get(0).toString());
+	}
+	
+	private Transactions getTransactions() {
+		try {
+			return new Transactions(sdf.parse(sdf.format(Calendar.getInstance().getTime())), 1, 0.0, 15000.0, 1,1,1,1,1);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}	
 
 }
