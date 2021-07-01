@@ -16,17 +16,17 @@ public class UserRole {
 	private String roleName;
 	private int roleType;
 	private int accessType;
-	private int onlyView;
-	private int isInsert;
-	private int isUpdate;
-	private int isDelete;
+	private boolean onlyView;
+	private boolean isInsert;
+	private boolean isUpdate;
+	private boolean isDelete;
 
 	public UserRole() {
 		super();
 	}
 
-	public UserRole(String roleName, int roleType, int accessType, int onlyView, int isInsert, int isUpdate,
-			int isDelete) {
+	public UserRole(String roleName, int roleType, int accessType, boolean onlyView, boolean isInsert, boolean isUpdate,
+			boolean isDelete) {
 		super();
 		this.roleName = roleName;
 		this.roleType = roleType;
@@ -69,35 +69,35 @@ public class UserRole {
 		this.accessType = accessType;
 	}
 
-	public int getOnlyView() {
+	public boolean getOnlyView() {
 		return onlyView;
 	}
 
-	public void setOnlyView(int onlyView) {
+	public void setOnlyView(boolean onlyView) {
 		this.onlyView = onlyView;
 	}
 
-	public int getIsInsert() {
+	public boolean getIsInsert() {
 		return isInsert;
 	}
 
-	public void setIsInsert(int isInsert) {
+	public void setIsInsert(boolean isInsert) {
 		this.isInsert = isInsert;
 	}
 
-	public int getIsUpdate() {
+	public boolean getIsUpdate() {
 		return isUpdate;
 	}
 
-	public void setIsUpdate(int isUpdate) {
+	public void setIsUpdate(boolean isUpdate) {
 		this.isUpdate = isUpdate;
 	}
 
-	public int getIsDelete() {
+	public boolean getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(int isDelete) {
+	public void setIsDelete(boolean isDelete) {
 		this.isDelete = isDelete;
 	}
 
