@@ -17,6 +17,7 @@ import com.tanmoy.inventory.domain.Stock;
 import com.tanmoy.inventory.domain.Supplier;
 import com.tanmoy.inventory.domain.Transactions;
 import com.tanmoy.inventory.domain.UserInfo;
+import com.tanmoy.inventory.domain.UserRole;
 import com.tanmoy.inventory.repository.CustomerRepo;
 import com.tanmoy.inventory.repository.ProductRepo;
 import com.tanmoy.inventory.repository.ProductTypeRepo;
@@ -24,6 +25,7 @@ import com.tanmoy.inventory.repository.StockRepo;
 import com.tanmoy.inventory.repository.SupplierRepo;
 import com.tanmoy.inventory.repository.TransactionsRepo;
 import com.tanmoy.inventory.repository.UserInfoRepo;
+import com.tanmoy.inventory.repository.UserRoleRepo;
 
 @SpringBootTest
 class InventoryApplicationTests {
@@ -35,6 +37,7 @@ class InventoryApplicationTests {
 	@Autowired private SupplierRepo suppRepo;
 	@Autowired private TransactionsRepo transRepo;
 	@Autowired private UserInfoRepo userInfoRepo;
+	@Autowired private UserRoleRepo roleRepo;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
@@ -202,6 +205,21 @@ class InventoryApplicationTests {
 	private String getBycrptPassword(String password) {
 		BCryptPasswordEncoder bcryptPassword = new BCryptPasswordEncoder(12);
 		return bcryptPassword.encode(password);
+	}
+	
+	@Test
+	void addUserRoleTest() {
+		roleRepo.save(getUserRole());
+	}
+	
+	@Test
+	void findUserRoleByRoleId() {
+		UserRole ur = roleRepo.findByRoleId(1);
+		System.out.println(ur.toString());
+	}
+	
+	private UserRole getUserRole() {
+		return new UserRole("Super Admin", 1, 1, false, true, true, true);
 	}
 
 }
