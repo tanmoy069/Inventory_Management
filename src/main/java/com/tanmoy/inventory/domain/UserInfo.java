@@ -12,19 +12,20 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "UserInfo", uniqueConstraints = @UniqueConstraint(columnNames = { "primaryPhone", "email" }))
+@Table(name = "UserInfo", uniqueConstraints = @UniqueConstraint(columnNames = { "userName", "primaryPhone", "email" }))
 public class UserInfo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
+	@Column(name = "userName", length = 100)
 	private String userName;
 	private String password;
 	private int roleId;
 	private String fullNname;
 	@Column(name = "primaryPhone", length = 100)
-	private long primaryPhone;
-	private long optionalPhone;
+	private int primaryPhone;
+	private int optionalPhone;
 	@Column(name = "email", length = 100)
 	private String email;
 	private String address;
@@ -35,8 +36,8 @@ public class UserInfo {
 		super();
 	}
 
-	public UserInfo(String userName, String password, int roleId, String fullNname, long primaryPhone,
-			long optionalPhone, String email, String address, int addressCode) {
+	public UserInfo(String userName, String password, int roleId, String fullNname, int primaryPhone,
+			int optionalPhone, String email, String address, int addressCode) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -90,19 +91,19 @@ public class UserInfo {
 		this.fullNname = fullNname;
 	}
 
-	public long getPrimaryPhone() {
+	public int getPrimaryPhone() {
 		return primaryPhone;
 	}
 
-	public void setPrimaryPhone(long primaryPhone) {
+	public void setPrimaryPhone(int primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 
-	public long getOptionalPhone() {
+	public int getOptionalPhone() {
 		return optionalPhone;
 	}
 
-	public void setOptionalPhone(long optionalPhone) {
+	public void setOptionalPhone(int optionalPhone) {
 		this.optionalPhone = optionalPhone;
 	}
 

@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.tanmoy.inventory.domain.Customer;
 import com.tanmoy.inventory.domain.Product;
@@ -15,12 +16,14 @@ import com.tanmoy.inventory.domain.ProductType;
 import com.tanmoy.inventory.domain.Stock;
 import com.tanmoy.inventory.domain.Supplier;
 import com.tanmoy.inventory.domain.Transactions;
+import com.tanmoy.inventory.domain.UserInfo;
 import com.tanmoy.inventory.repository.CustomerRepo;
 import com.tanmoy.inventory.repository.ProductRepo;
 import com.tanmoy.inventory.repository.ProductTypeRepo;
 import com.tanmoy.inventory.repository.StockRepo;
 import com.tanmoy.inventory.repository.SupplierRepo;
 import com.tanmoy.inventory.repository.TransactionsRepo;
+import com.tanmoy.inventory.repository.UserInfoRepo;
 
 @SpringBootTest
 class InventoryApplicationTests {
@@ -31,6 +34,7 @@ class InventoryApplicationTests {
 	@Autowired private StockRepo stockRepo;
 	@Autowired private SupplierRepo suppRepo;
 	@Autowired private TransactionsRepo transRepo;
+	@Autowired private UserInfoRepo userInfoRepo;
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
@@ -170,6 +174,34 @@ class InventoryApplicationTests {
 			e.printStackTrace();
 		}
 		return null;
-	}	
+	}
+	
+	@Test
+	void addUserInfoTest() {
+		userInfoRepo.save(getUserInfo());
+	}
+	
+	@Test
+	void findUserInfoByUserId() {
+		UserInfo ui= userInfoRepo.findByUserId(1);
+		System.out.println(ui.toString());
+	}
+	
+	@Test
+	void findUserInfoByRoleId() {
+		List<UserInfo> list= userInfoRepo.findByRoleId(1);
+		for (UserInfo ui : list) {
+			System.out.println(ui.toString());
+		}
+	}
+		
+	private UserInfo getUserInfo() {		
+		return new UserInfo("tanmoy1", getBycrptPassword("1234"), 1, "Tanmoy Tushar", 1762931868, 0, "tanmoy@gmail.com", "Khilkhet, Dhaka", 0);
+	}
+	
+	private String getBycrptPassword(String password) {
+		BCryptPasswordEncoder bcryptPassword = new BCryptPasswordEncoder(12);
+		return bcryptPassword.encode(password);
+	}
 
 }
