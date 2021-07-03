@@ -15,14 +15,14 @@ import java.util.logging.Logger;
 public abstract class AbstractService<T> {
 	protected final static Logger log = Logger.getLogger(AbstractService.class.getName());
 
-	protected abstract T findById(int id);
+	public abstract T findById(int id);
 
-	protected abstract List<T> findAll();
+	public abstract List<T> findAll();
 
-	protected abstract boolean save(T obj);
+	public abstract boolean save(T obj);
 
-	protected abstract boolean update(T obj);
+	public abstract boolean update(T obj);
 
-	protected abstract boolean deleteById(int id);
+	public abstract boolean deleteById(int id);
 
 }

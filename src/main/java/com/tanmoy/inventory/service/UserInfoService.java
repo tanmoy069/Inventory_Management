@@ -19,17 +19,17 @@ public class UserInfoService extends AbstractService<UserInfo> {
 	}
 
 	@Override
-	protected UserInfo findById(int id) {
+	public UserInfo findById(int id) {
 		return userInfoRepo.findByUserId(id);
 	}
 
 	@Override
-	protected List<UserInfo> findAll() {
+	public List<UserInfo> findAll() {
 		return userInfoRepo.findAll();
 	}
 
 	@Override
-	protected boolean save(UserInfo obj) {
+	public boolean save(UserInfo obj) {
 		try {
 			userInfoRepo.save(obj);
 			return true;
@@ -40,7 +40,7 @@ public class UserInfoService extends AbstractService<UserInfo> {
 	}
 
 	@Override
-	protected boolean update(UserInfo obj) {
+	public boolean update(UserInfo obj) {
 		try {
 			userInfoRepo.save(obj);
 			return true;
@@ -51,7 +51,7 @@ public class UserInfoService extends AbstractService<UserInfo> {
 	}
 
 	@Override
-	protected boolean deleteById(int id) {
+	public boolean deleteById(int id) {
 		try {
 			userInfoRepo.deleteById(id);
 			return true;
