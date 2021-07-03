@@ -199,7 +199,7 @@ class InventoryApplicationTests {
 	}
 		
 	private UserInfo getUserInfo() {		
-		return new UserInfo("tanmoy1", getBycrptPassword("1234"), 1, "Tanmoy Tushar", 1762931868, 0, "tanmoy@gmail.com", "Khilkhet, Dhaka", 0);
+		return new UserInfo("tanmoy1", getBycrptPassword("****"), 1, "Tanmoy Tushar", 1762931868, 0, "tanmoy@gmail.com", "Khilkhet, Dhaka", 0);
 	}
 	
 	private String getBycrptPassword(String password) {
