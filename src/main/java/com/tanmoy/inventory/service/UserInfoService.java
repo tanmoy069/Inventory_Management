@@ -26,6 +26,10 @@ public class UserInfoService extends AbstractService<UserInfo> {
 	public UserInfo findByUserName(String userName) {
 		return userInfoRepo.findByUserName(userName);
 	}
+	
+	public UserInfo findByEmail(String email) {
+		return userInfoRepo.findByEmail(email);
+	}
 
 	@Override
 	public List<UserInfo> findAll() {
