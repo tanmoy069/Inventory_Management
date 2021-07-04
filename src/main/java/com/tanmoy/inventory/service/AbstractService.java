@@ -15,6 +15,14 @@ import java.util.logging.Logger;
 public abstract class AbstractService<T> {
 	protected final static Logger log = Logger.getLogger(AbstractService.class.getName());
 
+	public int getInt(String str) {
+		try {
+			return Integer.parseInt(str);
+		} catch (Exception e) {
+			return 0;
+		}
+	}
+	
 	public abstract T findById(int id);
 
 	public abstract List<T> findAll();
