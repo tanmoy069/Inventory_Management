@@ -1,4 +1,4 @@
-package com.tanmoy.inventory.service;
+package com.tanmoy.inventory.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.tanmoy.inventory.domain.UserInfo;
+import com.tanmoy.inventory.service.UserInfoService;
 
 @Controller
 public class InventoryController {
@@ -21,6 +22,8 @@ public class InventoryController {
 	
 	@GetMapping(value ="/login")
 	public String login() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth.isAuthenticated()) auth.setAuthenticated(false);
 		return "Login";
 	}
 	
