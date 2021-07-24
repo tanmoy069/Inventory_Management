@@ -39,8 +39,11 @@ public class UserInfoService extends AbstractService<UserInfo> {
 	@Override
 	public boolean save(UserInfo obj) {
 		try {
-			userInfoRepo.save(obj);
-			return true;
+			if(findByUserName(obj.getUserName()) == null) {
+				userInfoRepo.save(obj);
+				return true;
+			}
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to insert user-" + obj.getUserId() + " to UserInfo");
 			return false;
