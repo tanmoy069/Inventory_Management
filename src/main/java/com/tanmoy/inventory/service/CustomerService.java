@@ -3,10 +3,12 @@ package com.tanmoy.inventory.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tanmoy.inventory.domain.Customer;
 import com.tanmoy.inventory.repository.CustomerRepo;
 
+@Service
 public class CustomerService extends AbstractService<Customer>{
 
 	private CustomerRepo custRepo;
