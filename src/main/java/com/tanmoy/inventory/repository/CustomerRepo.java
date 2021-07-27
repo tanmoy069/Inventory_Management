@@ -6,6 +6,7 @@ import com.tanmoy.inventory.domain.Customer;
 
 public interface CustomerRepo extends JpaRepository<Customer, Integer>{
 	
+	Customer findById(int id);
 	Customer findByUserName(String userName);
 
 }
