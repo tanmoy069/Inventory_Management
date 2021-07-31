@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "UserInfo", uniqueConstraints = @UniqueConstraint(columnNames = { "userName", "primaryPhone", "email" }))
@@ -19,18 +21,23 @@ public class UserInfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	@Column(name = "userName", length = 100)
+	@NotBlank(message="username is mandatory")
 	private String userName;
+	@NotBlank(message="passowrd is mandatory")
 	private String password;
 	private int roleId;
+	@NotBlank(message="Full name is mandatory")
 	private String fullNname;
-	@Column(name = "primaryPhone", length = 100)
+	@Column(name = "primaryPhone", length = 100, nullable = false)
 	private int primaryPhone;
 	private int optionalPhone;
 	@Column(name = "email", length = 100)
+	@NotBlank(message="email is mandatory")
 	private String email;
 	private String address;
 	private int addressCode;
 	private Date createdDate;
+	@NotNull
 	private int isActive;
 	
 	public UserInfo() {
