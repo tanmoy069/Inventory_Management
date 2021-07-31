@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -13,12 +15,19 @@ public class UserRole {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int roleId;
+	@NotBlank(message="Role name is mandatory")
 	private String roleName;
+	@NotNull
 	private int roleType;
+	@NotNull
 	private int accessType;
+	@NotNull
 	private boolean onlyView;
+	@NotNull
 	private boolean isInsert;
+	@NotNull
 	private boolean isUpdate;
+	@NotNull
 	private boolean isDelete;
 
 	public UserRole() {
