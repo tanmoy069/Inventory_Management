@@ -3,6 +3,8 @@ package com.tanmoy.inventory.service;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.validation.Valid;
+
 
 /**
  * AbstractService class can be used globally for all the service class of
@@ -27,9 +29,9 @@ public abstract class AbstractService<T> {
 
 	public abstract List<T> findAll();
 
-	public abstract boolean save(T obj);
+	public abstract boolean save(@Valid T obj);
 
-	public abstract boolean update(T obj);
+	public abstract boolean update(@Valid T obj);
 
 	public abstract boolean deleteById(int id);
 
