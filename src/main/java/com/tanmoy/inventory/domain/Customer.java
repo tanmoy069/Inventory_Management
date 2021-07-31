@@ -20,15 +20,15 @@ public class Customer {
 	private int id;
 	private String name;
 	private String comapanyName;
-	@Column(name = "primaryPhone", length = 11)
+	@Column(name = "primaryPhone", length = 11, nullable = false)
 	private int primaryPhone;
 	private int optionalPhone;
-	@Column(name = "email", length = 100)
+	@Column(name = "email", length = 100, nullable = false)
 	private String email;
 	private String address;
 	private int addressCode;
 	private int custType;
-	@Column(name = "userName", length = 50)
+	@Column(name = "userName", length = 50, nullable = false)
 	private String userName;
 	private String password;
 	private Date createdDate;
