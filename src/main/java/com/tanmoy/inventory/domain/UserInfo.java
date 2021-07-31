@@ -31,13 +31,14 @@ public class UserInfo {
 	private String address;
 	private int addressCode;
 	private Date createdDate;
+	private int isActive;
 	
 	public UserInfo() {
 		super();
 	}
 
 	public UserInfo(String userName, String password, int roleId, String fullNname, int primaryPhone,
-			int optionalPhone, String email, String address, int addressCode) {
+			int optionalPhone, String email, String address, int addressCode, int isActive) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -48,6 +49,7 @@ public class UserInfo {
 		this.email = email;
 		this.address = address;
 		this.addressCode = addressCode;
+		this.isActive = isActive;
 		this.createdDate = Calendar.getInstance().getTime();
 	}
 
@@ -138,13 +140,21 @@ public class UserInfo {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+	
+	public int isActive() {
+		return isActive;
+	}
+
+	public void setActive(int isActive) {
+		this.isActive = isActive;
+	}
 
 	@Override
 	public String toString() {
 		return "UserInfo [userId=" + userId + ", userName=" + userName + ", password=" + password + ", roleId=" + roleId
 				+ ", fullNname=" + fullNname + ", primaryPhone=" + primaryPhone + ", optionalPhone=" + optionalPhone
 				+ ", email=" + email + ", address=" + address + ", addressCode=" + addressCode + ", createdDate="
-				+ createdDate + "]";
+				+ createdDate + ", isActive=" + isActive + "]";
 	}
 
 }
