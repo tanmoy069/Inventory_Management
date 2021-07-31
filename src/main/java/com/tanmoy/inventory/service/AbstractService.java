@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
-
 /**
  * AbstractService class can be used globally for all the service class of
  * domain classes.
@@ -17,6 +16,12 @@ import javax.validation.Valid;
 public abstract class AbstractService<T> {
 	protected final static Logger log = Logger.getLogger(AbstractService.class.getName());
 
+	/**
+	 * Use this to get integer value from string
+	 * 
+	 * @param String
+	 * @return integer of string value
+	 */
 	public int getInt(String str) {
 		try {
 			return Integer.parseInt(str);
@@ -24,15 +29,46 @@ public abstract class AbstractService<T> {
 			return 0;
 		}
 	}
-	
+
+	/**
+	 * To get T object by object's primary id
+	 * 
+	 * @param id
+	 * @return T object
+	 */
 	public abstract T findById(int id);
 
+	/**
+	 * To get all items of T domain
+	 * 
+	 * @return all items of T object
+	 */
 	public abstract List<T> findAll();
 
+	/**
+	 * To Save T object. Validation has been added, so no need to check validation
+	 * in sub classes. It will automatically validate first before save object.
+	 * 
+	 * @param T
+	 * @return if successfully saved then true else false;
+	 */
 	public abstract boolean save(@Valid T obj);
 
+	/**
+	 * To Update T object. Validation has been added, so no need to check validation
+	 * in sub classes. It will automatically validate first before update object.
+	 * 
+	 * @param T
+	 * @return if successfully updated then true else false;
+	 */
 	public abstract boolean update(@Valid T obj);
 
+	/**
+	 * To delete T object
+	 * 
+	 * @param obj
+	 * @return if successfully deleted then true else false;
+	 */
 	public abstract boolean deleteById(int id);
 
 }
