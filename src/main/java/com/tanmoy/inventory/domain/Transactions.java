@@ -25,14 +25,14 @@ public class Transactions {
 	private int customerId;
 	private int userId;
 	private Date createDate;
-	private int invoiceNo;
+	private String invoiceNo;
 
 	public Transactions() {
 		super();
 	}
 
 	public Transactions(Date transDate, int transType, Double crAmount, Double drAmount, int productId,
-			int numberOfProduct, int customerId, int userId, int invoiceNo) {
+			int numberOfProduct, int customerId, int userId, String invoiceNo) {
 		super();
 		this.transDate = transDate;
 		this.transType = transType;
@@ -126,11 +126,11 @@ public class Transactions {
 		this.createDate = createDate;
 	}
 
-	public int getInvoiceNo() {
+	public String getInvoiceNo() {
 		return invoiceNo;
 	}
 
-	public void setInvoiceNo(int invoiceNo) {
+	public void setInvoiceNo(String invoiceNo) {
 		this.invoiceNo = invoiceNo;
 	}
 
