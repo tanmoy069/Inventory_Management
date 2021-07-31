@@ -6,6 +6,7 @@ import com.tanmoy.inventory.domain.Stock;
 
 public interface StockRepo extends JpaRepository<Stock, Integer>{
 	
-	Stock findByProductId(int i);
+	Stock findById(int id);
+	Stock findByProductId(int productId);
 
 }
