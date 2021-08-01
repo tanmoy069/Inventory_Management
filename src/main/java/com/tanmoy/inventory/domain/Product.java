@@ -18,8 +18,8 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String productName;
 	@NotBlank(message="Product name is mandatory")
+	private String productName;
 	@NotNull
 	private int productType;
 	private String details;
