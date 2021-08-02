@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Supplier", uniqueConstraints = @UniqueConstraint(columnNames = { "primaryPhone", "email" }))
@@ -18,12 +19,13 @@ public class Supplier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotBlank(message="Supplier name is mandatory")
 	private String name;
 	private String companyName;
-	@Column(name = "primaryPhone", length = 11)
+	@Column(name = "primaryPhone", length = 11, nullable = false)
 	private int primaryPhone;
 	private int optionalPhone;
-	@Column(name = "email", length = 100)
+	@Column(name = "email", length = 100, nullable = false)
 	private String email;
 	private String address;
 	private int addressCode;
