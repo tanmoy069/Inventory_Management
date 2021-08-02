@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -17,14 +19,20 @@ public class Transactions {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date transDate;
+	@NotNull
 	private int transType;
 	private Double crAmount;
 	private Double drAmount;
+	@NotNull
 	private int productId;
+	@NotNull
 	private int numberOfProduct;
+	@NotNull
 	private int customerId;
+	@NotNull
 	private int userId;
 	private Date createDate;
+	@NotBlank(message = "Invoice no is mandatory")
 	private String invoiceNo;
 
 	public Transactions() {
