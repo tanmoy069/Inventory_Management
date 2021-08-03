@@ -24,6 +24,7 @@ public class ProductTypeService extends AbstractService<ProductType> {
 		try {
 			return ptRepo.findById(id);
 		} catch (NoSuchElementException e) {
+			log.info("No such product type with id: " + id);
 			return null;
 		}
 	}
@@ -40,8 +41,10 @@ public class ProductTypeService extends AbstractService<ProductType> {
 				ptRepo.save(obj);
 				return true;
 			}
+			log.info("ProductType already exists of id: " + obj.getId());
 			return false;
 		} catch (Exception e) {
+			log.info("Failed to add ProductType due to " + e.getMessage());
 			return false;
 		}
 	}
@@ -52,6 +55,7 @@ public class ProductTypeService extends AbstractService<ProductType> {
 			ptRepo.save(obj);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to update ProductType due to " + e.getMessage());
 			return false;
 		}
 	}
@@ -62,6 +66,7 @@ public class ProductTypeService extends AbstractService<ProductType> {
 			ptRepo.deleteById(id);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to delete ProductType of id : "+ id +", due to " + e.getMessage());
 			return false;
 		}
 	}
