@@ -23,6 +23,7 @@ public class StockService extends AbstractService<Stock> {
 		try {
 			return stockRepo.findById(id);
 		} catch (Exception e) {
+			log.info("No such Stock whick id is: " + id);
 			return null;
 		}
 	}
@@ -39,8 +40,10 @@ public class StockService extends AbstractService<Stock> {
 				stockRepo.save(obj);
 				return true;
 			}
+			log.info("Already exists Stock which id is: " + obj.getAutoId());
 			return false;
 		} catch (Exception e) {
+			log.info("Failed to save Stock");
 			return false;
 		}
 	}
@@ -51,6 +54,7 @@ public class StockService extends AbstractService<Stock> {
 			stockRepo.save(obj);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to update Stock where id is: " + obj.getAutoId());
 			return false;
 		}
 	}
@@ -61,6 +65,7 @@ public class StockService extends AbstractService<Stock> {
 			stockRepo.deleteById(id);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to delete Stock where id is: " + id);
 			return false;
 		}
 	}
