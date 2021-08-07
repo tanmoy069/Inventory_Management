@@ -23,6 +23,7 @@ public class SupplierService extends AbstractService<Supplier> {
 		try {
 			return suppRepo.findById(id);
 		} catch (Exception e) {
+			log.info("No such Supplier which id is: " + id);
 			return null;
 		}
 	}
@@ -39,8 +40,10 @@ public class SupplierService extends AbstractService<Supplier> {
 				suppRepo.save(obj);
 				return true;
 			}
+			log.info("Already exist Supplier");
 			return false;
 		} catch (Exception e) {
+			log.info("Failed to save supplier");
 			return false;
 		}
 	}
@@ -51,6 +54,7 @@ public class SupplierService extends AbstractService<Supplier> {
 			suppRepo.save(obj);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to update supplier's id: " + obj.getId());
 			return false;
 		}
 	}
@@ -61,6 +65,7 @@ public class SupplierService extends AbstractService<Supplier> {
 			suppRepo.deleteById(id);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to delete supplier's id: " + id);
 			return false;
 		}
 	}
