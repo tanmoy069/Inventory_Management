@@ -23,6 +23,7 @@ public class TransactionsService extends AbstractService<Transactions> {
 		try {
 			return transRepo.findById(id);
 		} catch (Exception e) {
+			log.info("No such Transactions which id is: " + id);
 			return null;
 		}
 	}
@@ -39,8 +40,10 @@ public class TransactionsService extends AbstractService<Transactions> {
 				transRepo.save(obj);
 				return true;
 			}
+			log.info("Already exists Transactions");
 			return false;
 		} catch (Exception e) {
+			log.info("Failed to save Transactions due to " + e.getMessage());
 			return false;
 		}
 	}
@@ -51,6 +54,7 @@ public class TransactionsService extends AbstractService<Transactions> {
 			transRepo.save(obj);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to update Transactions's id: "+ obj.getId() +"  due to " + e.getMessage());
 			return false;
 		}
 	}
@@ -61,6 +65,7 @@ public class TransactionsService extends AbstractService<Transactions> {
 			transRepo.deleteById(id);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to delete Transactions's id: "+ id +"  due to " + e.getMessage());
 			return false;
 		}
 	}
