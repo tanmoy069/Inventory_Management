@@ -1,41 +1,71 @@
 package com.tanmoy.inventory.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.validation.Valid;
 
-import com.tanmoy.inventory.domain.Invoice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class InvoiceService extends AbstractService<Invoice>{
+import com.tanmoy.inventory.domain.Invoice;
+import com.tanmoy.inventory.repository.InvoiceRepo;
+
+@Service
+public class InvoiceService extends AbstractService<Invoice> {
+
+	private InvoiceRepo invoiceRepo;
+
+	@Autowired
+	public InvoiceService(InvoiceRepo invoiceRepo) {
+		this.invoiceRepo = invoiceRepo;
+	}
 
 	@Override
 	public Invoice findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return invoiceRepo.findById(id);
+		} catch (NoSuchElementException e) {
+			return null;
+		}
 	}
 
 	@Override
 	public List<Invoice> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return invoiceRepo.findAll();
 	}
 
 	@Override
 	public boolean save(@Valid Invoice obj) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			if (findById(obj.getId()) == null) {
+				invoiceRepo.save(obj);
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean update(@Valid Invoice obj) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			invoiceRepo.save(obj);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean deleteById(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			invoiceRepo.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 }
