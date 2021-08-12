@@ -26,6 +26,7 @@ public class InvoiceService extends AbstractService<Invoice> {
 		try {
 			return invoiceRepo.findById(id);
 		} catch (NoSuchElementException e) {
+			log.info("No such Invoice which id is: " + id);
 			return null;
 		}
 	}
@@ -42,8 +43,10 @@ public class InvoiceService extends AbstractService<Invoice> {
 				invoiceRepo.save(obj);
 				return true;
 			}
+			log.info("Invoice already exists");
 			return false;
 		} catch (Exception e) {
+			log.info("Failed to insert ivoice id -" + obj.getId() + " to Invoice");
 			return false;
 		}
 	}
@@ -54,6 +57,7 @@ public class InvoiceService extends AbstractService<Invoice> {
 			invoiceRepo.save(obj);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to update Invoice id-" + obj.getId());
 			return false;
 		}
 	}
@@ -64,6 +68,7 @@ public class InvoiceService extends AbstractService<Invoice> {
 			invoiceRepo.deleteById(id);
 			return true;
 		} catch (Exception e) {
+			log.info("Failed to delete Invoice id-" + id);
 			return false;
 		}
 	}
