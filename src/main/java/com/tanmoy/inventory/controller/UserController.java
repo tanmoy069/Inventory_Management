@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tanmoy.inventory.domain.UserInfo;
 import com.tanmoy.inventory.service.UserInfoService;
 
-@RestController()
+@RestController
 @RequestMapping("/user")
 public class UserController {
 	
