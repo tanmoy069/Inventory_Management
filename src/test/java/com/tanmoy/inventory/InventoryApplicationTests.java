@@ -172,7 +172,7 @@ class InventoryApplicationTests {
 	
 	private Transactions getTransactions() {
 		try {
-			return new Transactions(sdf.parse(sdf.format(Calendar.getInstance().getTime())), 1, 0.0, 15000.0, 1,1,1,1,1);
+			return new Transactions(sdf.parse(sdf.format(Calendar.getInstance().getTime())), 1, 0.0, 15000.0, 1,1,1,1,"INV01");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -199,7 +199,7 @@ class InventoryApplicationTests {
 	}
 		
 	private UserInfo getUserInfo() {		
-		return new UserInfo("tanmoy1", getBycrptPassword("****"), 1, "Tanmoy Tushar", 1762931868, 0, "tanmoy@gmail.com", "Khilkhet, Dhaka", 0);
+		return new UserInfo("tanmoy1", getBycrptPassword("****"), 1, "Tanmoy Tushar", 1762931868, 0, "tanmoy@gmail.com", "Khilkhet, Dhaka", 0, 1);
 	}
 	
 	private String getBycrptPassword(String password) {
