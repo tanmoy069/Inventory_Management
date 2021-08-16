@@ -26,6 +26,10 @@ public class CustomerService extends AbstractService<Customer>{
 	public Customer findByUserName(String userName) {
 		return custRepo.findByUserName(userName);
 	}
+	
+	public Customer findByEmail(String email) {
+		return custRepo.findByEmail(email);
+	}
 
 	@Override
 	public List<Customer> findAll() {
