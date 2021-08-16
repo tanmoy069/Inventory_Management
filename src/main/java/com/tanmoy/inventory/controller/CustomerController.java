@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tanmoy.inventory.domain.Customer;
@@ -24,6 +25,16 @@ public class CustomerController {
 	@GetMapping("/findall")
 	public List<Customer> getAllCustomer() {
 		return custService.findAll();
+	}
+	
+	@GetMapping("/findby")
+	public Customer getUserByParam(@RequestParam(name="username", required = false) String userName,
+			@RequestParam(name="id", required = false) String id,
+			@RequestParam(name="email", required = false) String email) {
+		if(userName == null && id == null && email == null) return new Customer();
+		if(id != null) return custService.findById(custService.getInt(id));
+		if(email != null) return custService.findByEmail(email);
+		return custService.findByUserName(userName);
 	}
 
 }
