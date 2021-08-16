@@ -27,6 +27,11 @@ public class InventoryController {
 		return "Login";
 	}
 	
+	@GetMapping(value="/")
+	public String redirectHome(Model model) {
+		return getHome(model);
+	}
+	
 	@GetMapping(value="/home")
 	public String getHome(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
