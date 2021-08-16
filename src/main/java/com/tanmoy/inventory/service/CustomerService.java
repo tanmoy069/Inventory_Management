@@ -1,6 +1,7 @@
 package com.tanmoy.inventory.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,30 @@ public class CustomerService extends AbstractService<Customer>{
 	
 	@Override
 	public Customer findById(int id) {
-		return custRepo.findById(id);
+		try {
+			return custRepo.findById(id);
+		} catch (NoSuchElementException e) {
+			log.info("No such Customer which id is: " + id);
+			return null;
+		}
 	}
 	
 	public Customer findByUserName(String userName) {
-		return custRepo.findByUserName(userName);
+		try {
+			return custRepo.findByUserName(userName);
+		} catch (NoSuchElementException e) {
+			log.info("No such Customer which username is: " + userName);
+			return null;
+		}
 	}
 	
 	public Customer findByEmail(String email) {
-		return custRepo.findByEmail(email);
+		try {
+			return custRepo.findByEmail(email);
+		} catch (NoSuchElementException e) {
+			log.info("No such Customer which email is: " + email);
+			return null;
+		}
 	}
 
 	@Override
