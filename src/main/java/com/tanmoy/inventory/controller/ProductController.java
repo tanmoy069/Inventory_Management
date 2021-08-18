@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tanmoy.inventory.domain.Product;
-import com.tanmoy.inventory.domain.UserInfo;
 import com.tanmoy.inventory.service.ProductService;
 
 @RestController
@@ -23,10 +22,10 @@ public class ProductController {
 		this.productService = productService;
 	}
 	
-	@GetMapping("/list")
-	public List<Product> getProductList() {
-		return productService.findAll();
+	@GetMapping("/findall")
+	public List<Product> getProductList(@RequestParam(name="producttype", required = false) String type) {
+		if(type == null)return productService.findAll();
+		return productService.findByProductType(productService.getInt(type));
 	}
 	
-
 }
