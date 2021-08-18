@@ -14,18 +14,24 @@ import com.tanmoy.inventory.service.ProductService;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-	
+
 	private ProductService productService;
 
 	@Autowired
 	public ProductController(ProductService productService) {
 		this.productService = productService;
 	}
-	
+
 	@GetMapping("/findall")
-	public List<Product> getProductList(@RequestParam(name="producttype", required = false) String type) {
-		if(type == null)return productService.findAll();
+	public List<Product> getProductList(@RequestParam(name = "producttype", required = false) String type) {
+		if (type == null) return productService.findAll();
 		return productService.findByProductType(productService.getInt(type));
 	}
-	
+
+	@GetMapping("/findby")
+	public Product getProduct(@RequestParam(name = "id", required = false) String id) {
+		if (id == null) return new Product();
+		return productService.findById(productService.getInt(id));
+	}
+
 }
