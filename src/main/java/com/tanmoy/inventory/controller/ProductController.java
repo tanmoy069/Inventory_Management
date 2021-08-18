@@ -28,13 +28,5 @@ public class ProductController {
 		return productService.findAll();
 	}
 	
-	@GetMapping("/findby")
-	public UserInfo getUserByParam(@RequestParam(name="username", required = false) String userName,
-			@RequestParam(name="userid", required = false) String userId,
-			@RequestParam(name="email", required = false) String email) {
-		if(userName == null && userId == null && email == null) return new UserInfo();
-		if(userId != null) return userInfoService.findById(userInfoService.getInt(userId));
-		if(email != null) return userInfoService.findByEmail(email);
-		return userInfoService.findByUserName(userName);
-	}
+
 }
