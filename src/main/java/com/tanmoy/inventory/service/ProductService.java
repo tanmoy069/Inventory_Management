@@ -22,6 +22,10 @@ public class ProductService extends AbstractService<Product> {
 	public Product findById(int id) {
 		return proRepo.findById(id);
 	}
+	
+	public List<Product> findByProductType(int type){
+		return proRepo.findByProductType(type);
+	}
 
 	@Override
 	public List<Product> findAll() {
