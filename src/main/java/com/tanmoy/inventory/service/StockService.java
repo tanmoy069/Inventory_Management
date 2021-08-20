@@ -23,7 +23,16 @@ public class StockService extends AbstractService<Stock> {
 		try {
 			return stockRepo.findById(id);
 		} catch (Exception e) {
-			log.info("No such Stock whick id is: " + id);
+			log.info("No such Stock which id is: " + id);
+			return null;
+		}
+	}
+	
+	public Stock findByProductId(int productId) {
+		try {
+			return stockRepo.findByProductId(productId);
+		} catch (Exception e) {
+			log.info("No such Stock which product id is: " + productId);
 			return null;
 		}
 	}
