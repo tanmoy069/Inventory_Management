@@ -104,7 +104,7 @@ class InventoryApplicationTests {
 	}
 	
 	private Stock getStock() {
-		return new Stock(1, 10, false, null);
+		return new Stock(2, 15, (short)1, null);
 	}
 	
 	@Test
