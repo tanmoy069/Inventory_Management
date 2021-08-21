@@ -23,7 +23,7 @@ public class Stock {
 	@NotNull
 	@Min(0)
 	private int availableStocks;
-	private boolean isStockUpdate;
+	private short isStockUpdate;
 	private Date stockInDate;
 	private Date stockOutDate;
 
@@ -31,7 +31,7 @@ public class Stock {
 		super();
 	}
 
-	public Stock(int productId, int availableStocks, boolean isStockUpdate, Date stockOutDate) {
+	public Stock(int productId, int availableStocks, short isStockUpdate, Date stockOutDate) {
 		super();
 		this.productId = productId;
 		this.availableStocks = availableStocks;
@@ -64,11 +64,11 @@ public class Stock {
 		this.availableStocks = availableStocks;
 	}
 
-	public boolean isStockUpdate() {
+	public short isStockUpdate() {
 		return isStockUpdate;
 	}
 
-	public void setStockUpdate(boolean isStockUpdate) {
+	public void setStockUpdate(short isStockUpdate) {
 		this.isStockUpdate = isStockUpdate;
 	}
 
