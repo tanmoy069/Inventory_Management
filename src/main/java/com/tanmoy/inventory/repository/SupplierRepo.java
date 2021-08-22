@@ -12,5 +12,6 @@ public interface SupplierRepo extends JpaRepository<Supplier, Integer>{
 	List<Supplier> findByCompanyNameContains(String companyName);
 	List<Supplier> findByNameContains(String name);
 	Supplier findByEmail(String email);
+	Supplier findByPrimaryPhone(int phone);
 	
 }
