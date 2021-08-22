@@ -28,6 +28,10 @@ public class SupplierService extends AbstractService<Supplier> {
 		}
 	}
 	
+	public Supplier findByPhone(int phone) {
+		return suppRepo.findByPrimaryPhone(phone);
+	}
+	
 	public List<Supplier> findByCompanyNameContains(String comapanyName){
 		return suppRepo.findByCompanyNameContains(comapanyName);
 	}
