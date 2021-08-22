@@ -25,7 +25,7 @@ public class Supplier {
 	@Column(name = "primaryPhone", length = 11, nullable = false)
 	private int primaryPhone;
 	private int optionalPhone;
-	@Column(name = "email", length = 100, nullable = false)
+	@Column(name = "email", length = 100)
 	private String email;
 	private String address;
 	private int addressCode;
