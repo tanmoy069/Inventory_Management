@@ -27,6 +27,10 @@ public class SupplierService extends AbstractService<Supplier> {
 			return null;
 		}
 	}
+	
+	public List<Supplier> findByCompanyNameContains(String str){
+		return suppRepo.findByCompanyNameContains(str);
+	}
 
 	@Override
 	public List<Supplier> findAll() {
