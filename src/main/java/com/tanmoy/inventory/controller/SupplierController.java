@@ -23,8 +23,11 @@ public class SupplierController {
 	}
 	
 	@GetMapping("/findall")
-	public List<Supplier> getSupplierList(){
-		return suppService.findAll();
+	public List<Supplier> getSupplierList(@RequestParam(name="name", required = false) String name,
+			@RequestParam(name="companyName", required = false) String companyName){
+		if(name == null && companyName == null) return suppService.findAll();
+		if(name == null && companyName != null) return suppService.findByCompanyNameContains(companyName);
+		return suppService.findByNameContains(name);
 	}
 	
 	@GetMapping("/findby")
