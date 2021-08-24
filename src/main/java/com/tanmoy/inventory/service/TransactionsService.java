@@ -28,23 +28,23 @@ public class TransactionsService extends AbstractService<Transactions> {
 			return null;
 		}
 	}
-	
+
 	public List<Transactions> findByTransDate(Date transDate) {
 		return transRepo.findByTransDate(transDate);
 	}
-	
+
 	public List<Transactions> findByUserId(int userId) {
 		return transRepo.findByUserId(userId);
 	}
-	
+
 	public List<Transactions> findByProductId(int productId) {
 		return transRepo.findByProductId(productId);
 	}
-	
+
 	public List<Transactions> findByCustomerId(int customerId) {
 		return transRepo.findByCustomerId(customerId);
 	}
-	
+
 	public List<Transactions> findbyInvoiceNo(String invoiceNo) {
 		return transRepo.findbyInvoiceNo(invoiceNo);
 	}
@@ -75,7 +75,7 @@ public class TransactionsService extends AbstractService<Transactions> {
 			transRepo.save(obj);
 			return true;
 		} catch (Exception e) {
-			log.info("Failed to update Transactions's id: "+ obj.getId() +"  due to " + e.getMessage());
+			log.info("Failed to update Transactions's id: " + obj.getId() + "  due to " + e.getMessage());
 			return false;
 		}
 	}
@@ -86,7 +86,7 @@ public class TransactionsService extends AbstractService<Transactions> {
 			transRepo.deleteById(id);
 			return true;
 		} catch (Exception e) {
-			log.info("Failed to delete Transactions's id: "+ id +"  due to " + e.getMessage());
+			log.info("Failed to delete Transactions's id: " + id + "  due to " + e.getMessage());
 			return false;
 		}
 	}
