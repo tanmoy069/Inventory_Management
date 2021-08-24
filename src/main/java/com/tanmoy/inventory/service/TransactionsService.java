@@ -44,6 +44,10 @@ public class TransactionsService extends AbstractService<Transactions> {
 	public List<Transactions> findByCustomerId(int customerId) {
 		return transRepo.findByCustomerId(customerId);
 	}
+	
+	public List<Transactions> findbyInvoiceNo(String invoiceNo) {
+		return transRepo.findbyInvoiceNo(invoiceNo);
+	}
 
 	@Override
 	public List<Transactions> findAll() {
