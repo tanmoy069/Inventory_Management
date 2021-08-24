@@ -40,6 +40,10 @@ public class TransactionsService extends AbstractService<Transactions> {
 	public List<Transactions> findByProductId(int productId) {
 		return transRepo.findByProductId(productId);
 	}
+	
+	public List<Transactions> findByCustomerId(int customerId) {
+		return transRepo.findByCustomerId(customerId);
+	}
 
 	@Override
 	public List<Transactions> findAll() {
