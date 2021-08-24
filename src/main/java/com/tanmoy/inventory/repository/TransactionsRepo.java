@@ -14,5 +14,6 @@ public interface TransactionsRepo extends JpaRepository<Transactions, Integer>{
 	List<Transactions> findByUserId(int userId);
 	List<Transactions> findByProductId(int productId);
 	List<Transactions> findByCustomerId(int customerId);
+	List<Transactions> findbyInvoiceNo(String invoiceNo);
 
 }
