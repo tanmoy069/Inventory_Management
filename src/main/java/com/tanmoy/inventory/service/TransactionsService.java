@@ -46,7 +46,7 @@ public class TransactionsService extends AbstractService<Transactions> {
 	}
 
 	public List<Transactions> findbyInvoiceNo(String invoiceNo) {
-		return transRepo.findbyInvoiceNo(invoiceNo);
+		return transRepo.findByInvoiceNo(invoiceNo);
 	}
 
 	@Override
