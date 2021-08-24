@@ -1,5 +1,6 @@
 package com.tanmoy.inventory.service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -15,6 +16,7 @@ import javax.validation.Valid;
  */
 public abstract class AbstractService<T> {
 	protected final static Logger log = Logger.getLogger(AbstractService.class.getName());
+	public final DateTimeFormatter DF = DateTimeFormatter.ofPattern("yyyy-MM-dd");			
 
 	/**
 	 * Use this to get integer value from string
