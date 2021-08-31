@@ -1,6 +1,5 @@
 package com.tanmoy.inventory.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class TransactionsService extends AbstractService<Transactions> {
 		}
 	}
 
-	public List<Transactions> findByTransDate(Date transDate) {
+	public List<Transactions> findByTransDate(String transDate) {
 		return transRepo.findByTransDate(transDate);
 	}
 
