@@ -29,7 +29,7 @@ public class TransactionsController {
 			@RequestParam(name="invoiceNo", required = false) String invoiceNo,
 			@RequestParam(name="transDate", required = false) String transDate) {
 		if(userId == null && productId == null && customerId == null && invoiceNo == null && transDate != null) {
-			return transService.findByTransDate(transService.getDate(transDate));
+			return transService.findByTransDate(transDate);
 		}
 		if(userId == null && productId == null && customerId == null && invoiceNo != null && transDate == null) {
 			return transService.findbyInvoiceNo(invoiceNo);
