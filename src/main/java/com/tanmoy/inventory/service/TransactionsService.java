@@ -31,6 +31,10 @@ public class TransactionsService extends AbstractService<Transactions> {
 	public List<Transactions> findByTransDate(String transDate) {
 		return transRepo.findByTransDate(transDate);
 	}
+	
+	public List<Transactions> findByTransDateContains(String transDate) {
+		return transRepo.findByTransDateContains(transDate);
+	}
 
 	public List<Transactions> findByUserId(int userId) {
 		return transRepo.findByUserId(userId);
