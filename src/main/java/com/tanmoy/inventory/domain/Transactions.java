@@ -18,7 +18,8 @@ public class Transactions {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private Date transDate;
+	@NotNull
+	private String transDate;
 	@NotNull
 	private int transType;
 	private Double crAmount;
@@ -39,7 +40,7 @@ public class Transactions {
 		super();
 	}
 
-	public Transactions(Date transDate, int transType, Double crAmount, Double drAmount, int productId,
+	public Transactions(String transDate, int transType, Double crAmount, Double drAmount, int productId,
 			int numberOfProduct, int customerId, int userId, String invoiceNo) {
 		super();
 		this.transDate = transDate;
@@ -62,11 +63,11 @@ public class Transactions {
 		this.id = id;
 	}
 
-	public Date getTransDate() {
+	public String getTransDate() {
 		return transDate;
 	}
 
-	public void setTransDate(Date transDate) {
+	public void setTransDate(String transDate) {
 		this.transDate = transDate;
 	}
 
