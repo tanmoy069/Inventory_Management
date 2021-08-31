@@ -23,8 +23,30 @@ public class TransactionsController {
 	}
 	
 	@GetMapping("/findall")
-	public List<Transactions> getTransactionsList() {
-		return transService.findAll();
+	public List<Transactions> getTransactionsList(@RequestParam(name="userId", required = false) String userId,
+			@RequestParam(name="productId", required = false) String productId,
+			@RequestParam(name="customerId", required = false) String customerId,
+			@RequestParam(name="invoiceNo", required = false) String invoiceNo,
+			@RequestParam(name="transDate", required = false) String transDate) {
+		if(userId == null && productId == null && customerId == null && invoiceNo == null && transDate != null) {
+			return transService.findByTransDate(transService.getDate(transDate));
+		}
+		if(userId == null && productId == null && customerId == null && invoiceNo != null && transDate == null) {
+			return transService.findbyInvoiceNo(invoiceNo);
+		}
+		if(userId == null && productId == null && customerId != null && invoiceNo == null && transDate == null) {
+			return transService.findByCustomerId(transService.getInt(customerId));
+		}
+		if(userId == null && productId != null && customerId == null && invoiceNo == null && transDate == null) {
+			return transService.findByProductId(transService.getInt(productId));
+		}
+		if(userId != null && productId == null && customerId == null && invoiceNo == null && transDate == null) {
+			return transService.findByUserId(transService.getInt(userId));
+		}
+		if(userId == null && productId == null && customerId == null && invoiceNo == null && transDate == null) {
+			return transService.findAll();
+		}
+		return null;
 	}
 	
 	@GetMapping("/findby")
