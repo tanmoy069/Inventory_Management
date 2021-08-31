@@ -1,6 +1,5 @@
 package com.tanmoy.inventory.service;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -19,7 +18,8 @@ import javax.validation.Valid;
  */
 public abstract class AbstractService<T> {
 	protected final static Logger log = Logger.getLogger(AbstractService.class.getName());
-	public final DateTimeFormatter DF = DateTimeFormatter.ofPattern("yyyy-MM-dd");		
+	public final String DATE_PATTERN_1 = "yyyy-MM-dd";
+	public final DateTimeFormatter DF = DateTimeFormatter.ofPattern(DATE_PATTERN_1);		
 
 	/**
 	 * Use this to get integer value from string
@@ -43,8 +43,8 @@ public abstract class AbstractService<T> {
 	 */
 	public Date getDate(String date) {
 		try {
-			return new SimpleDateFormat(DF.toString()).parse(date);
-		} catch (ParseException e) {
+			return new SimpleDateFormat(DATE_PATTERN_1).parse(date);
+		} catch (Exception e) {
 			log.info("Failed to parse date : " + date);
 			return null;
 		}
