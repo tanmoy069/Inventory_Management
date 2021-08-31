@@ -10,6 +10,7 @@ public interface TransactionsRepo extends JpaRepository<Transactions, Integer>{
 	
 	Transactions findById(int id);
 	List<Transactions> findByTransDate(String tDate);
+	List<Transactions> findByTransDateContains(String tDate);
 	List<Transactions> findByUserId(int userId);
 	List<Transactions> findByProductId(int productId);
 	List<Transactions> findByCustomerId(int customerId);
