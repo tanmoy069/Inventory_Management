@@ -29,7 +29,9 @@ public class TransactionsController {
 			@RequestParam(name="invoiceNo", required = false) String invoiceNo,
 			@RequestParam(name="transDate", required = false) String transDate) {
 		if(userId == null && productId == null && customerId == null && invoiceNo == null && transDate != null) {
-			return transService.findByTransDate(transDate);
+			List<Transactions> list = transService.findByTransDate(transDate);
+			if(list.size()>0) return list;
+			return transService.findByTransDateContains(transDate);
 		}
 		if(userId == null && productId == null && customerId == null && invoiceNo != null && transDate == null) {
 			return transService.findbyInvoiceNo(invoiceNo);
