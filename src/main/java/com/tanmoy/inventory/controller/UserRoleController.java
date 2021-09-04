@@ -28,8 +28,10 @@ public class UserRoleController {
 	}
 
 	@GetMapping("/findall")
-	public List<UserRole> getUserRoleList(@RequestParam(name = "accessType", required = false) String accessType) {
-		if(accessType != null) return roleService.findByAccessType(roleService.getInt(accessType));
+	public List<UserRole> getUserRoleList(@RequestParam(name = "accessType", required = false) String accessType,
+			@RequestParam(name = "roleType", required = false) String roleType) {
+		if(accessType != null && roleType == null) return roleService.findByAccessType(roleService.getInt(accessType));
+		if(accessType == null && roleType != null) return roleService.findByRoleType(roleService.getInt(roleType));
 		return roleService.findAll();
 	}
 
