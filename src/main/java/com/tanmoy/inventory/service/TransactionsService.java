@@ -56,16 +56,35 @@ public class TransactionsService extends AbstractService<Transactions> {
 	public List<Transactions> findAll() {
 		return transRepo.findAll();
 	}
+	
+	private boolean hasTransactions(Transactions obj) {
+		return findById(obj.getId()) == null ? false : true;
+	}
 
 	@Override
 	public boolean save(Transactions obj) {
 		try {
-			if (findById(obj.getId()) == null) {
+			if (!hasTransactions(obj)) {
 				transRepo.save(obj);
 				return true;
 			}
 			log.info("Already exists Transactions");
 			return false;
+		} catch (Exception e) {
+			log.info("Failed to save Transactions due to " + e.getMessage());
+			return false;
+		}
+	}
+	
+	public boolean saveAll(List<Transactions> objList) {
+		try {
+			boolean hasTrans = objList.stream().anyMatch(obj -> hasTransactions(obj) == true);
+			if(hasTrans) {
+				log.info("Transactions already exists in your system");
+				return false;
+			}
+			transRepo.saveAll(objList);
+			return true;
 		} catch (Exception e) {
 			log.info("Failed to save Transactions due to " + e.getMessage());
 			return false;
