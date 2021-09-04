@@ -23,8 +23,12 @@ public class UserRoleService extends AbstractService<UserRole> {
 		return roleRepo.findByRoleId(id);
 	}
 	
-	public List<UserRole> findUserRoleByRoleType(int type){
-		return roleRepo.findByRoleType(type);
+	public List<UserRole> findByRoleType(int roleType){
+		return roleRepo.findByRoleType(roleType);
+	}
+	
+	public List<UserRole> findByAccessType(int accessType){
+		return roleRepo.findByAccessType(accessType);
 	}
 
 	@Override
