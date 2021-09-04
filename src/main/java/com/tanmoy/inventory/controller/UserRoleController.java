@@ -28,7 +28,8 @@ public class UserRoleController {
 	}
 
 	@GetMapping("/findall")
-	public List<UserRole> getUserRoleList() {
+	public List<UserRole> getUserRoleList(@RequestParam(name = "accessType", required = false) String accessType) {
+		if(accessType != null) return roleService.findByAccessType(roleService.getInt(accessType));
 		return roleService.findAll();
 	}
 
