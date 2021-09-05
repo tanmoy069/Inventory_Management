@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tanmoy.inventory.domain.UserRole;
 import com.tanmoy.inventory.service.UserRoleService;
 
@@ -16,10 +18,12 @@ import com.tanmoy.inventory.service.UserRoleService;
 public class UserRoleController {
 
 	private UserRoleService roleService;
+	private ObjectMapper objMapper;
 
 	@Autowired
-	public UserRoleController(UserRoleService roleService) {
+	public UserRoleController(UserRoleService roleService, ObjectMapper objMapper) {
 		this.roleService = roleService;
+		this.objMapper = objMapper;
 	}
 
 	@GetMapping("/findby")
@@ -34,5 +38,5 @@ public class UserRoleController {
 		if(accessType == null && roleType != null) return roleService.findByRoleType(roleService.getInt(roleType));
 		return roleService.findAll();
 	}
-
+	
 }
