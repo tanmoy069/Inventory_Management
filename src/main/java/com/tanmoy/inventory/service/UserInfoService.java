@@ -20,7 +20,12 @@ public class UserInfoService extends AbstractService<UserInfo> {
 
 	@Override
 	public UserInfo findById(int id) {
-		return userInfoRepo.findByUserId(id);
+		try {
+			return userInfoRepo.findByUserId(id);
+		} catch (Exception e) {
+			log.info("Failed to get UserInfo of userId: " + id);
+			return null;
+		}		
 	}
 	
 	public UserInfo findByUserName(String userName) {
