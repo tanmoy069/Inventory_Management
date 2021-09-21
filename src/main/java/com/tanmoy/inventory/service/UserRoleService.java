@@ -54,8 +54,12 @@ public class UserRoleService extends AbstractService<UserRole> {
 	@Override
 	public boolean update(UserRole obj) {
 		try {
-			roleRepo.save(obj);
-			return true;
+			if(roleRepo.findById(obj.getRoleId()) != null) {
+				roleRepo.save(obj);
+				return true;
+			}
+			log.info("Unable to update, because user role dosen't exits");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update id-" + obj.getRoleId());
 			return false;
