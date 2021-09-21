@@ -49,5 +49,10 @@ public class UserRoleController {
 	public boolean saveUserRole(UserRole role) {
 		return roleService.save(role);
 	}
+	
+	@PostMapping("/update")
+	public boolean updateUserRole(UserRole role) {
+		return roleService.update(role);
+	}
 
 }
