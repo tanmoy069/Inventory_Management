@@ -43,6 +43,7 @@ public class UserRoleService extends AbstractService<UserRole> {
 				roleRepo.save(obj);
 				return true;
 			}
+			log.info("User role already exist which roleId is : " + obj.getRoleId());
 			return false;
 		} catch (Exception e) {
 			log.info("Failed to insert user role-" + obj.getRoleId() + " to UserRole");
