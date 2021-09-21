@@ -54,5 +54,10 @@ public class UserRoleController {
 	public boolean updateUserRole(UserRole role) {
 		return roleService.update(role);
 	}
+	
+	@PostMapping("/delete")
+	public boolean deleteUserRole(@RequestParam(name = "roleId", required = true) String roleId) {
+		return roleService.deleteById(roleService.getInt(roleId));
+	}	
 
 }
