@@ -2,8 +2,11 @@ package com.tanmoy.inventory.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +46,11 @@ public class UserRoleController {
 	public UserRole validateUserRoleModel(UserRole role){
 		System.out.println(role.toString());
 		return role;
+	}
+	
+	@PostMapping("/save")
+	public boolean saveUserRole(UserRole role) {
+		return roleService.save(role);
 	}
 
 }
