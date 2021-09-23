@@ -50,8 +50,23 @@ public class UserRoleController {
 		return roleService.save(role);
 	}
 	
-	@PostMapping("/update")
-	public boolean updateUserRole(UserRole role) {
+	@GetMapping("/update")
+	public boolean updateUserRole(@RequestParam(name = "roleId", required = true) String roleId,
+			@RequestParam(name = "roleName", required = false) String roleName,
+			@RequestParam(name = "roleType", required = false) String roleType,
+			@RequestParam(name = "accessType", required = false) String accessType,
+			@RequestParam(name = "onlyView", required = false) String onlyView,
+			@RequestParam(name = "isInsert", required = false) String isInsert,
+			@RequestParam(name = "isUpdate", required = false) String isUpdate,
+			@RequestParam(name = "isDelete", required = false) String isDelete) {
+		UserRole role = roleService.findById(roleService.getInt(roleId));
+		if(roleName != null) role.setRoleName(roleName);
+		if(roleType != null) role.setRoleType(roleService.getInt(roleType));
+		if(accessType != null) role.setAccessType(roleService.getInt(accessType));
+		if(onlyView != null) role.setOnlyView(roleService.getBoolean(onlyView));
+		if(isInsert != null) role.setIsInsert(roleService.getBoolean(isInsert));
+		if(isUpdate != null) role.setIsUpdate(roleService.getBoolean(isUpdate));
+		if(isDelete != null) role.setIsDelete(roleService.getBoolean(isDelete));
 		return roleService.update(role);
 	}
 	
