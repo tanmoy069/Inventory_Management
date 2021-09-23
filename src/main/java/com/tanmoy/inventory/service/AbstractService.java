@@ -36,6 +36,20 @@ public abstract class AbstractService<T> {
 	}
 	
 	/**
+	 * Use this to get boolean value from string
+	 * 
+	 * @param String
+	 * @return integer of string value
+	 */
+	public boolean getBoolean(String str) {
+		try {
+			return Integer.parseInt(str) == 1 ? true : false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	/**
 	 * To parse string from date use this method.
 	 * 
 	 * @param date
