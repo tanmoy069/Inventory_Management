@@ -37,12 +37,6 @@ public class UserRoleController {
 		if(accessType != null && roleType == null) return roleService.findByAccessType(roleService.getInt(accessType));
 		if(accessType == null && roleType != null) return roleService.findByRoleType(roleService.getInt(roleType));
 		return roleService.findAll();
-	}	
-	
-	@GetMapping("/test")
-	public UserRole validateUserRoleModel(UserRole role){
-		System.out.println(role.toString());
-		return role;
 	}
 	
 	@PostMapping("/save")
