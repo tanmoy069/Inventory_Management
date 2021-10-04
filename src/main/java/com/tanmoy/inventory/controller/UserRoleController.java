@@ -44,7 +44,7 @@ public class UserRoleController {
 		return roleService.save(role);
 	}
 	
-	@GetMapping("/update")
+	@PostMapping("/update")
 	public boolean updateUserRole(@RequestParam(name = "roleId", required = true) String roleId,
 			@RequestParam(name = "roleName", required = false) String roleName,
 			@RequestParam(name = "roleType", required = false) String roleType,
