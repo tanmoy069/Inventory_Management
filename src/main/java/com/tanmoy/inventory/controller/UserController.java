@@ -39,8 +39,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/delete")
-	public boolean deleteUser(@RequestParam(name = "roleId", required = true) String roleId) {
-		return userInfoService.deleteById(userInfoService.getInt(roleId));
+	public boolean deleteUser(@RequestParam(name = "userId", required = true) String userId) {
+		return userInfoService.deleteById(userInfoService.getInt(userId));
 	}
 
 }
