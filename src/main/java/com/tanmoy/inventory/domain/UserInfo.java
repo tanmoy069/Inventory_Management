@@ -13,6 +13,8 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Entity
 @Table(name = "UserInfo", uniqueConstraints = @UniqueConstraint(columnNames = { "userName", "primaryPhone", "email" }))
 public class UserInfo {
@@ -48,7 +50,7 @@ public class UserInfo {
 			int optionalPhone, String email, String address, int addressCode, int isActive) {
 		super();
 		this.userName = userName;
-		this.password = password;
+		this.password = getBycrptPassword(password);
 		this.roleId = roleId;
 		this.fullNname = fullNname;
 		this.primaryPhone = primaryPhone;
@@ -81,7 +83,7 @@ public class UserInfo {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = getBycrptPassword(password);
 	}
 
 	public int getRoleId() {
@@ -154,6 +156,11 @@ public class UserInfo {
 
 	public void setActive(int isActive) {
 		this.isActive = isActive;
+	}
+	
+	private String getBycrptPassword(String password) {
+		BCryptPasswordEncoder bcryptPassword = new BCryptPasswordEncoder(12);
+		return bcryptPassword.encode(password);
 	}
 
 	@Override
