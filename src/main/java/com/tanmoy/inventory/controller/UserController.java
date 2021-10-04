@@ -42,5 +42,28 @@ public class UserController {
 	public boolean deleteUser(@RequestParam(name = "userId", required = true) String userId) {
 		return userInfoService.deleteById(userInfoService.getInt(userId));
 	}
+	
+	@PostMapping("/update")
+	public boolean updateUser(@RequestParam(name = "userId", required = true) String userId,
+			@RequestParam(name = "password", required = false) String password,
+			@RequestParam(name = "roleId", required = false) String roleId,
+			@RequestParam(name = "fullName", required = false) String fullName,
+			@RequestParam(name = "primaryPhone", required = false) String primaryPhone,
+			@RequestParam(name = "optionalPhone", required = false) String optionalPhone,
+			@RequestParam(name = "email", required = false) String email,
+			@RequestParam(name = "address", required = false) String address,
+			@RequestParam(name = "addressCode", required = false) String addressCode) {
+		UserInfo user = userInfoService.findById(userInfoService.getInt(userId));
+		if(user == null) return false;
+		if(password != null) user.setPassword(password);
+		if(roleId != null) user.setRoleId(userInfoService.getInt(roleId));
+		if(fullName != null) user.setFullName(fullName);
+		if(primaryPhone != null) user.setPrimaryPhone(userInfoService.getInt(primaryPhone));
+		if(optionalPhone != null) user.setOptionalPhone(userInfoService.getInt(optionalPhone));
+		if(email != null) user.setEmail(email);
+		if(address != null) user.setAddress(address);
+		if(addressCode != null) user.setAddressCode(userInfoService.getInt(addressCode));
+		return userInfoService.update(user);
+	}
 
 }
