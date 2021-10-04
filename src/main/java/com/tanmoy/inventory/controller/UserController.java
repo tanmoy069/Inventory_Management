@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,11 @@ public class UserController {
 		if(userId != null) return userInfoService.findById(userInfoService.getInt(userId));
 		if(email != null) return userInfoService.findByEmail(email);
 		return userInfoService.findByUserName(userName);
+	}
+	
+	@PostMapping("/delete")
+	public boolean deleteUser(@RequestParam(name = "roleId", required = true) String roleId) {
+		return userInfoService.deleteById(userInfoService.getInt(roleId));
 	}
 
 }
