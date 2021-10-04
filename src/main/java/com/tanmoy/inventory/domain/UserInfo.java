@@ -29,7 +29,7 @@ public class UserInfo {
 	private String password;
 	private int roleId;
 	@NotBlank(message="Full name is mandatory")
-	private String fullNname;
+	private String fullName;
 	@Column(name = "primaryPhone", length = 100, nullable = false)
 	private int primaryPhone;
 	private int optionalPhone;
@@ -46,13 +46,13 @@ public class UserInfo {
 		super();
 	}
 
-	public UserInfo(String userName, String password, int roleId, String fullNname, int primaryPhone,
+	public UserInfo(String userName, String password, int roleId, String fullName, int primaryPhone,
 			int optionalPhone, String email, String address, int addressCode, int isActive) {
 		super();
 		this.userName = userName;
 		this.password = getBycrptPassword(password);
 		this.roleId = roleId;
-		this.fullNname = fullNname;
+		this.fullName = fullName;
 		this.primaryPhone = primaryPhone;
 		this.optionalPhone = optionalPhone;
 		this.email = email;
@@ -94,12 +94,12 @@ public class UserInfo {
 		this.roleId = roleId;
 	}
 
-	public String getFullNname() {
-		return fullNname;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFullNname(String fullNname) {
-		this.fullNname = fullNname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public int getPrimaryPhone() {
@@ -166,7 +166,7 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return "UserInfo [userId=" + userId + ", userName=" + userName + ", password=" + password + ", roleId=" + roleId
-				+ ", fullNname=" + fullNname + ", primaryPhone=" + primaryPhone + ", optionalPhone=" + optionalPhone
+				+ ", fullName=" + fullName + ", primaryPhone=" + primaryPhone + ", optionalPhone=" + optionalPhone
 				+ ", email=" + email + ", address=" + address + ", addressCode=" + addressCode + ", createdDate="
 				+ createdDate + ", isActive=" + isActive + "]";
 	}
