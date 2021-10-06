@@ -12,7 +12,7 @@ import com.tanmoy.inventory.repository.StockRepo;
 public class StockService extends AbstractService<Stock> {
 
 	private StockRepo stockRepo;
-
+	
 	@Autowired
 	public StockService(StockRepo stockRepo) {
 		this.stockRepo = stockRepo;
@@ -60,8 +60,12 @@ public class StockService extends AbstractService<Stock> {
 	@Override
 	public boolean update(Stock obj) {
 		try {
-			stockRepo.save(obj);
-			return true;
+			if(findById(obj.getAutoId()) != null) {
+				stockRepo.save(obj);
+				return true;
+			}
+			log.info("Unable to update Stock, Stock doesn't exists");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update Stock where id is: " + obj.getAutoId());
 			return false;
