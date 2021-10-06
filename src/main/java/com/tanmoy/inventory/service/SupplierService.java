@@ -67,8 +67,12 @@ public class SupplierService extends AbstractService<Supplier> {
 	@Override
 	public boolean update(Supplier obj) {
 		try {
-			suppRepo.save(obj);
-			return true;
+			if(findById(obj.getId()) != null) {
+				suppRepo.save(obj);
+				return true;
+			}
+			log.info("Unable to update supplier, Supplier doesn't exists");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update supplier's id: " + obj.getId());
 			return false;
