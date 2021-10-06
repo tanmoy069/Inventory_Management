@@ -48,9 +48,10 @@ public class UserInfoService extends AbstractService<UserInfo> {
 				userInfoRepo.save(obj);
 				return true;
 			}
+			log.info("User Id" + obj.getUserId() + " already exists");
 			return false;
 		} catch (Exception e) {
-			log.info("Failed to insert user-" + obj.getUserId() + " to UserInfo");
+			log.info("Failed to insert user-" + obj.getUserName() + " to UserInfo");
 			return false;
 		}
 	}
@@ -58,8 +59,12 @@ public class UserInfoService extends AbstractService<UserInfo> {
 	@Override
 	public boolean update(UserInfo obj) {
 		try {
-			userInfoRepo.save(obj);
-			return true;
+			if(findById(obj.getUserId()) != null) {
+				userInfoRepo.save(obj);
+				return true;
+			}
+			log.info("User dosen't exits, failed to update");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update id-" + obj.getUserId());
 			return false;
