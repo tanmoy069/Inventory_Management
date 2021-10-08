@@ -69,8 +69,12 @@ public class CustomerService extends AbstractService<Customer>{
 	@Override
 	public boolean update(Customer obj) {
 		try {
-			custRepo.save(obj);
-			return true;
+			if(findByUserName(obj.getUserName()) != null) {
+				custRepo.save(obj);
+				return true;
+			}
+			log.info("Unable to update Customer, Customer doesn't exists");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update customer user name-" + obj.getUserName());
 			return false;
