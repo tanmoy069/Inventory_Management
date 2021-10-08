@@ -52,8 +52,12 @@ public class ProductTypeService extends AbstractService<ProductType> {
 	@Override
 	public boolean update(ProductType obj) {
 		try {
-			ptRepo.save(obj);
-			return true;
+			if (findById(obj.getId()) != null) {
+				ptRepo.save(obj);
+				return true;
+			}
+			log.info("Unable to update ProductType, ProductType doesn't exists");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update ProductType due to " + e.getMessage());
 			return false;
