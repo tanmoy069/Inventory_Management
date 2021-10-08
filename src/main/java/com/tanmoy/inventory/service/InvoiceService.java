@@ -3,8 +3,6 @@ package com.tanmoy.inventory.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +35,7 @@ public class InvoiceService extends AbstractService<Invoice> {
 	}
 
 	@Override
-	public boolean save(@Valid Invoice obj) {
+	public boolean save(Invoice obj) {
 		try {
 			if (findById(obj.getId()) == null) {
 				invoiceRepo.save(obj);
@@ -52,7 +50,7 @@ public class InvoiceService extends AbstractService<Invoice> {
 	}
 
 	@Override
-	public boolean update(@Valid Invoice obj) {
+	public boolean update(Invoice obj) {
 		try {
 			invoiceRepo.save(obj);
 			return true;
