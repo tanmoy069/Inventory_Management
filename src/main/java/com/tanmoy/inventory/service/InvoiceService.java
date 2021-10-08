@@ -52,8 +52,12 @@ public class InvoiceService extends AbstractService<Invoice> {
 	@Override
 	public boolean update(Invoice obj) {
 		try {
-			invoiceRepo.save(obj);
-			return true;
+			if (findById(obj.getId()) != null) {
+				invoiceRepo.save(obj);
+				return true;
+			}
+			log.info("Unable to update Invoice, Invoice doesn't exists");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update Invoice id-" + obj.getId());
 			return false;
