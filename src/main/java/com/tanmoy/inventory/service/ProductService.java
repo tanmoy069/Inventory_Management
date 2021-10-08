@@ -49,8 +49,12 @@ public class ProductService extends AbstractService<Product> {
 	@Override
 	public boolean update(Product obj) {
 		try {
-			proRepo.save(obj);
-			return true;
+			if (findById(obj.getId()) != null) {
+				proRepo.save(obj);
+				return true;			
+			}
+			log.info("Unable to update Product, Product doesn't exists");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update product id-" + obj.getId());
 			return false;
