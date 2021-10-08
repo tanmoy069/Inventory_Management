@@ -94,8 +94,12 @@ public class TransactionsService extends AbstractService<Transactions> {
 	@Override
 	public boolean update(Transactions obj) {
 		try {
-			transRepo.save(obj);
-			return true;
+			if(findById(obj.getId()) != null) {
+				transRepo.save(obj);
+				return true;
+			}
+			log.info("Unable to update Transactions, Transactions doesn't exists");
+			return false;
 		} catch (Exception e) {
 			log.info("Failed to update Transactions's id: " + obj.getId() + "  due to " + e.getMessage());
 			return false;
