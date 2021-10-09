@@ -38,6 +38,11 @@ public class UserController {
 		return userInfoService.findByUserName(userName);
 	}
 	
+	@PostMapping("/save")
+	public boolean saveUser(UserInfo user) {
+		return userInfoService.save(user);
+	}
+	
 	@PostMapping("/delete")
 	public boolean deleteUser(@RequestParam(name = "userId", required = true) String userId) {
 		return userInfoService.deleteById(userInfoService.getInt(userId));
