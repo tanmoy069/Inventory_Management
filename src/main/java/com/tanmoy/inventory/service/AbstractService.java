@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 /**
  * AbstractService class can be used globally for all the service class of
  * domain classes.
@@ -62,6 +64,15 @@ public abstract class AbstractService<T> {
 			log.info("Failed to parse date : " + date);
 			return null;
 		}
+	}
+	
+	/**
+	 * Check requested by user is authenticated or not.
+	 *  
+	 * @return if authenticated then true else false
+	 */
+	public boolean isAuthenticated() {
+		return SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
 	}
 
 	/**
