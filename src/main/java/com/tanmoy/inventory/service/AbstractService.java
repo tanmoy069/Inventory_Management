@@ -38,6 +38,20 @@ public abstract class AbstractService<T> {
 	}
 	
 	/**
+	 * Use this to get double value from string
+	 * 
+	 * @param String
+	 * @return double of string value
+	 */
+	public Double getDouble(String str) {
+		try {
+			return Double.parseDouble(str);
+		} catch (Exception e) {
+			return 0.0;
+		}
+	}
+	
+	/**
 	 * Use this to get boolean value from string
 	 * 
 	 * @param String
