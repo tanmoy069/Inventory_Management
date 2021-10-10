@@ -62,6 +62,11 @@ public class TransactionsController {
 		return transService.save(transactions);
 	}
 	
+	@PostMapping("/delete")
+	public boolean deleteTransactions(@RequestParam(name = "id", required = true) String id) {
+		return transService.deleteById(transService.getInt(id));
+	}
+	
 	@PostMapping("/update")
 	public boolean updateTransactions(@RequestParam(name = "id", required = true) String id,
 			@RequestParam(name = "transDate", required = false) String transDate,
