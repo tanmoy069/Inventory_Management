@@ -62,5 +62,30 @@ public class TransactionsController {
 		return transService.save(transactions);
 	}
 	
+	@PostMapping("/update")
+	public boolean updateTransactions(@RequestParam(name = "id", required = true) String id,
+			@RequestParam(name = "transDate", required = false) String transDate,
+			@RequestParam(name = "transType", required = false) String transType,
+			@RequestParam(name = "crAmount", required = false) String crAmount,
+			@RequestParam(name = "drAmount", required = false) String drAmount,
+			@RequestParam(name = "productId", required = false) String productId,
+			@RequestParam(name = "numberOfProduct", required = false) String numberOfProduct,
+			@RequestParam(name = "customerId", required = false) String customerId,
+			@RequestParam(name = "userId", required = false) String userId,
+			@RequestParam(name = "invoiceNo", required = false) String invoiceNo) {
+		Transactions trans = transService.findById(transService.getInt(id));
+		if(trans == null) return false;
+		if(transDate != null) trans.setTransDate(transDate);
+		if(transType != null) trans.setTransType(transService.getInt(transType));
+		if(crAmount != null) trans.setCrAmount(transService.getDouble(crAmount));
+		if(drAmount != null) trans.setDrAmount(transService.getDouble(drAmount));
+		if(productId != null) trans.setProductId(transService.getInt(productId));
+		if(numberOfProduct != null) trans.setNumberOfProduct(transService.getInt(numberOfProduct));
+		if(customerId != null) trans.setCustomerId(transService.getInt(customerId));
+		if(userId != null) trans.setUserId(transService.getInt(userId));
+		if(invoiceNo != null) trans.setInvoiceNo(invoiceNo);
+		return transService.update(trans);
+	}
+	
 	
 }
