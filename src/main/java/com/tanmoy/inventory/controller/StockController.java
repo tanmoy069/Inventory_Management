@@ -39,5 +39,10 @@ public class StockController {
 	public boolean saveStock(Stock stock) {
 		return stockService.save(stock);
 	}
+	
+	@PostMapping("/delete")
+	public boolean deleteStock(@RequestParam(name = "id", required = true) String id) {
+		return stockService.deleteById(stockService.getInt(id));
+	}
 
 }
