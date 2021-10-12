@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +39,11 @@ public class SupplierController {
 		if(id == null && phone == null) return suppService.findByEmail(email);
 		if(id == null && email == null) return suppService.findByPhone(suppService.getInt(phone));
 		return suppService.findById(suppService.getInt(id));
+	}
+	
+	@PostMapping("/save")
+	public boolean saveTransactions(Supplier supplier) {
+		return suppService.save(supplier);
 	}
 
 }
