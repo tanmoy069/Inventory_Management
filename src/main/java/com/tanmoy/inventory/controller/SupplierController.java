@@ -50,5 +50,28 @@ public class SupplierController {
 	public boolean deleteSupplier(@RequestParam(name = "id", required = true) String id) {
 		return suppService.deleteById(suppService.getInt(id));
 	}
+	
+	@PostMapping("/update")
+	public boolean updateSupplier(@RequestParam(name = "id", required = true) String id,
+			@RequestParam(name = "name", required = false) String name,
+			@RequestParam(name = "companyName", required = false) String companyName,
+			@RequestParam(name = "primaryPhone", required = false) String primaryPhone,
+			@RequestParam(name = "optionalPhone", required = false) String optionalPhone,
+			@RequestParam(name = "email", required = false) String email,
+			@RequestParam(name = "address", required = false) String address,
+			@RequestParam(name = "addressCode", required = false) String addressCode,
+			@RequestParam(name = "userId", required = false) String createdDate) {
+		Supplier supp = suppService.findById(suppService.getInt(id));
+		if(supp == null) return false;
+		if(name != null) supp.setName(name);
+		if(companyName != null) supp.setComapanyName(companyName);
+		if(primaryPhone != null) supp.setPrimaryPhone(suppService.getInt(primaryPhone));
+		if(optionalPhone != null) supp.setOptionalPhone(suppService.getInt(optionalPhone));
+		if(email != null) supp.setEmail(email);
+		if(address != null) supp.setAddress(address);
+		if(addressCode != null) supp.setAddressCode(suppService.getInt(addressCode));
+		if(createdDate != null) supp.setCreatedDate(suppService.getDate(createdDate));
+		return suppService.update(supp);
+	}
 
 }
