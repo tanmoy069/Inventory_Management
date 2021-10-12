@@ -42,8 +42,13 @@ public class SupplierController {
 	}
 	
 	@PostMapping("/save")
-	public boolean saveTransactions(Supplier supplier) {
+	public boolean saveSupplier(Supplier supplier) {
 		return suppService.save(supplier);
+	}
+	
+	@PostMapping("/delete")
+	public boolean deleteSupplier(@RequestParam(name = "id", required = true) String id) {
+		return suppService.deleteById(suppService.getInt(id));
 	}
 
 }
