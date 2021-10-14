@@ -44,5 +44,22 @@ public class StockController {
 	public boolean deleteStock(@RequestParam(name = "id", required = true) String id) {
 		return stockService.deleteById(stockService.getInt(id));
 	}
+	
+	@PostMapping("/update")
+	public boolean updateStock(@RequestParam(name = "id", required = true) String id,
+			@RequestParam(name = "productId", required = false) String productId,
+			@RequestParam(name = "availableStocks", required = false) String availableStocks,
+			@RequestParam(name = "isStockUpdate", required = false) String isStockUpdate,
+			@RequestParam(name = "stockInDate", required = false) String stockInDate,
+			@RequestParam(name = "stockOutDate", required = false) String stockOutDate) {
+		Stock stock = stockService.findById(stockService.getInt(id));
+		if(stock == null) return false;
+		if(productId != null) stock.setProductId(stockService.getInt(productId));
+		if(availableStocks != null) stock.setAvailableStocks(stockService.getInt(availableStocks));
+		if(isStockUpdate != null) stock.setStockUpdate((short)stockService.getInt(isStockUpdate));
+		if(stockInDate != null) stock.setStockInDate(stockService.getDate(stockInDate));
+		if(stockOutDate != null) stock.setStockOutDate(stockService.getDate(stockOutDate));
+		return stockService.update(stock);
+	}
 
 }
