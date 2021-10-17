@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +32,11 @@ public class ProductTypeController {
 	@GetMapping("/findby")
 	public ProductType getProductById(@RequestParam(name = "id", required = false) String id) {
 		return proTypeService.findById(proTypeService.getInt(id));
+	}
+
+	@PostMapping("/save")
+	public boolean saveProductType(@RequestBody ProductType productType) {
+		return proTypeService.save(productType);
 	}
 
 }
