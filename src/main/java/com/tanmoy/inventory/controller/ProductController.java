@@ -41,6 +41,11 @@ public class ProductController {
 		return productService.save(product);
 	}
 	
+	@PostMapping("/delete")
+	public boolean deleteProduct(@RequestParam(name = "id", required = false) String id) {
+		return productService.deleteById(productService.getInt(id));
+	}
+	
 	
 
 }
