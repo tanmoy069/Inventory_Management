@@ -43,5 +43,16 @@ public class ProductTypeController {
 	public boolean deleteProductType(@RequestParam(name = "id", required = true) String id) {
 		return proTypeService.deleteById(proTypeService.getInt(id));
 	}
+	
+	@PostMapping("/update")
+	public boolean updateProductType(@RequestParam(name = "id", required = true) String id,
+			@RequestParam(name = "typeName", required = false) String typeName,
+			@RequestParam(name = "details", required = false) String details) {
+		ProductType proType = proTypeService.findById(proTypeService.getInt(id));
+		if(proType == null) return false;
+		if(typeName != null) proType.setTypeName(typeName);
+		if(details != null) proType.setDetails(details);		
+		return proTypeService.update(proType);
+	}
 
 }
