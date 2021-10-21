@@ -38,5 +38,10 @@ public class ProductTypeController {
 	public boolean saveProductType(@RequestBody ProductType productType) {
 		return proTypeService.save(productType);
 	}
+	
+	@PostMapping("/delete")
+	public boolean deleteProductType(@RequestParam(name = "id", required = true) String id) {
+		return proTypeService.deleteById(proTypeService.getInt(id));
+	}
 
 }
