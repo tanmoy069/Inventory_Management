@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +37,11 @@ public class CustomerController {
 		if(id != null) return custService.findById(custService.getInt(id));
 		if(email != null) return custService.findByEmail(email);
 		return custService.findByUserName(userName);
+	}
+	
+	@PostMapping("/save")
+	public boolean saveCustomer(@RequestBody Customer cust) {
+		return custService.save(cust);
 	}
 
 }
