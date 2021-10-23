@@ -46,6 +46,21 @@ public class ProductController {
 		return productService.deleteById(productService.getInt(id));
 	}
 	
-	
+	@PostMapping("/update")
+	public boolean updateProduct(@RequestParam(name = "id", required = false) String id,
+			@RequestParam(name = "productName", required = false) String productName,
+			@RequestParam(name = "productType", required = false) String productType,
+			@RequestParam(name = "details", required = false) String details,
+			@RequestParam(name = "purchaseValue", required = false) String purchaseValue,
+			@RequestParam(name = "sellingValue", required = false) String sellingValue) {
+		Product pro = productService.findById(productService.getInt(id));
+		if(pro == null) return false;
+		if(productName != null) pro.setProductName(productName);
+		if(productType != null) pro.setProductType(productService.getInt(productType));
+		if(details != null) pro.setDetails(details);
+		if(purchaseValue != null) pro.setPurchaseValue(productService.getDouble(purchaseValue));
+		if(sellingValue != null) pro.setSellingValue(productService.getDouble(sellingValue));
+		return productService.update(pro);
+	}
 
 }
