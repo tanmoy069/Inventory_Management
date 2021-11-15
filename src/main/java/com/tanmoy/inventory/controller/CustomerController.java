@@ -43,5 +43,10 @@ public class CustomerController {
 	public boolean saveCustomer(@RequestBody Customer cust) {
 		return custService.save(cust);
 	}
+	
+	@PostMapping("/delete")
+	public boolean deleteCustomer(@RequestParam(name = "id", required = true) String id) {
+		return custService.deleteById(custService.getInt(id));
+	}
 
 }
