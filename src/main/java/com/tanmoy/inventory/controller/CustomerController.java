@@ -48,5 +48,32 @@ public class CustomerController {
 	public boolean deleteCustomer(@RequestParam(name = "id", required = true) String id) {
 		return custService.deleteById(custService.getInt(id));
 	}
+	
+	@PostMapping("/update")
+	public boolean updateCustomer(@RequestParam(name = "id", required = false) String id,
+			@RequestParam(name = "name", required = false) String name,
+			@RequestParam(name = "comapanyName", required = false) String comapanyName,
+			@RequestParam(name = "primaryPhone", required = false) String primaryPhone,
+			@RequestParam(name = "optionalPhone", required = false) String optionalPhone,
+			@RequestParam(name = "email", required = false) String email,
+			@RequestParam(name = "address", required = false) String address,
+			@RequestParam(name = "addressCode", required = false) String addressCode,
+			@RequestParam(name = "custType", required = false) String custType,
+			@RequestParam(name = "userName", required = false) String userName,
+			@RequestParam(name = "password", required = false) String password) {
+		Customer cust = custService.findById(custService.getInt(id));
+		if(cust == null) return false;
+		if(name != null) cust.setName(name);
+		if(comapanyName != null) cust.setComapanyName(comapanyName);
+		if(primaryPhone != null) cust.setPrimaryPhone(custService.getInt(primaryPhone));
+		if(optionalPhone != null) cust.setOptionalPhone(custService.getInt(optionalPhone));
+		if(email != null) cust.setEmail(email);
+		if(address != null) cust.setAddress(address);
+		if(addressCode != null) cust.setAddressCode(custService.getInt(addressCode));
+		if(custType != null) cust.setCustType(custService.getInt(custType));
+		if(userName != null) cust.setUserName(userName);
+		if(password != null) cust.setPassword(password);
+		return custService.update(cust);
+	}
 
 }
